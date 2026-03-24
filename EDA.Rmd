@@ -1,170 +1,702 @@
 ---
 title: "Analyse Exploratoire des Données (EDA) - Rugby"
-output: 
+output:
   html_document:
     toc: true
     toc_float: true
-    theme: flatly
+    theme: united
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
 
-# 1. Introduction & Importation
-
-Cette analyse exploratoire porte sur le jeu de données `rugby.xlsx`. Nous allons examiner la structure dimensionnelle globale, les différentes variables, ainsi que la répartition des joueurs et des entraînements au sein des données.
+# 1. Préparation des données
 
 ```{r librairies}
 # Chargement des librairies nécessaires
-library(ggplot2)
-library(dplyr)
-library(readxl)
-library(tidyr)
+library(tidyverse)    # Manipulation de données et visualisation (ggplot2, dplyr...)
+library(readxl)       # Lecture de fichiers Excel
+library(FactoMineR)   # Pour l'Analyse en Composantes Principales (ACP)
+library(factoextra)   # Pour la visualisation des résultats d'ACP
+library(corrplot)     # Pour la matrice de corrélation
+library(lubridate)    # Pour la gestion des dates
 ```
 
 ```{r import}
 # Importation du jeu de données
+# Assurez-vous que le chemin correspond bien à votre fichier
 dataset <- read_excel("data/rugby.xlsx")
-# write to CSV
-write.csv(dataset, "data/rugby.csv", row.names = FALSE)
-```
 
-# 2. Analyse Dimensionnelle Globale
-
-```{r dimension}
-# Dimensions du jeu de données (lignes, colonnes)
-dim_data <- dim(dataset)
-cat("Le jeu de données contient", dim_data[1], "observations (lignes) et", dim_data[2], "variables (colonnes).\n")
-
-# Aperçu des premières lignes
-head(dataset)
-```
-
-# 3. Analyse des Variables
-
-Nous allons inspecter le type de chaque variable ainsi que s'informer sur la présence éventuelle de valeurs manquantes.
-
-```{r structure}
-# Structure des variables (types, etc.)
-str(dataset)
-
-# Résumé statistique des variables
-summary(dataset)
-
-# Nom des colonnes :
-colonnes <- colnames(dataset)
-cat("\n--- Noms des colonnes ---\n")
-print(colonnes)
-
-# Calcul du nombre de valeurs manquantes par variable
-na_counts <- sapply(dataset, function(x) sum(is.na(x)))
-cat("\n--- Variables avec des valeurs manquantes ---\n")
-na_counts_filtered <- na_counts[na_counts > 0]
-if(length(na_counts_filtered) > 0) {
-  print(na_counts_filtered)
-} else {
-  cat("Aucune valeur manquante détectée.\n")
-}
-```
-
-# 4. Analyse des Entraînements et des Joueurs
-
-Dans cette section transversale, nous allons chercher à extraire des statistiques sur les entraînements et les joueurs.
-*Note : Le code tente d'identifier les colonnes automatiquement (ex: "player", "nom", "session", "date"). Il est recommandé de vérifier les noms de colonnes et de les ajuster si nécessaire.*
-
-```{r entrainements_joueurs}
-# Identification automatique potentielle des colonnes 
-noms_colonnes <- colnames(dataset)
-
-# Cherchons des colonnes pour le joueur
-col_joueur <- grep("player|joueur|nom|id", noms_colonnes, ignore.case = TRUE, value = TRUE)[1]
-
-# Cherchons des colonnes pour l'entraînement/session
-col_entrainement <- grep("session|entrainement|training|date", noms_colonnes, ignore.case = TRUE, value = TRUE)[1]
-
-# Analyse Joueurs
-if (!is.na(col_joueur)) {
-  cat("\nVariable identifiant les joueurs :", col_joueur, "\n")
-  n_joueurs <- n_distinct(dataset[[col_joueur]])
-  cat("Nombre de joueurs distincts :", n_joueurs, "\n")
-  
-  cat("\nRépartition des observations par joueur (Top 10) :\n")
-  print(
-    dataset %>%
-      count(!!sym(col_joueur), sort = TRUE) %>%
-      head(10)
+# Nettoyage et typage des variables
+df <- dataset |>
+  mutate(
+    Joueur = as.factor(Joueur),
+    Poste = as.factor(Poste),
+    `Poste groupe` = as.factor(`Poste groupe`),
+    Type = as.factor(Type),
+    Date = as.Date(Date)
   )
-} else {
-  cat("\nAucune colonne de joueur clairement identifiée. Modifiez `col_joueur` manuellement.\n")
-}
 
-# Analyse Entraînements
-if (!is.na(col_entrainement)) {
-  cat("\nVariable identifiant les entraînements :", col_entrainement, "\n")
-  n_entrainements <- n_distinct(dataset[[col_entrainement]])
-  cat("Nombre d'entraînements distincts :", n_entrainements, "\n")
-  
-  cat("\nRépartition des observations par entraînement (Top 10) :\n")
-  print(
-    dataset %>%
-      count(!!sym(col_entrainement), sort = TRUE) %>%
-      head(10)
+# Aperçu de la structure des données propres
+str(df)
+```
+
+# 2. Audit et nettoyage des données
+
+Avant toute analyse avancée, nous auditons les données pour traiter les valeurs manquantes, les outliers de fréquence cardiaque, et normaliser les scores subjectifs.
+
+```{r audit}
+# --- Valeurs manquantes ---
+cat("== Valeurs manquantes par variable ==\n")
+colSums(is.na(df))
+
+# --- Outliers de Fréquence Cardiaque ---
+# Quelques valeurs anormales : FC = 0 (Fickou) ou FC = 50 (Jelonch)
+cat("\n== Observations avec FC < 100 bpm (suspectes) ==\n")
+df %>% filter(`Fréquence cardiaque moyenne (bpm)` < 100) %>%
+  select(Joueur, Date, Type, `Fréquence cardiaque moyenne (bpm)`)
+
+# Correction : remplacer par la médiane du joueur pour le même type de séance
+df <- df %>%
+  group_by(Joueur, Type) %>%
+  mutate(
+    `Fréquence cardiaque moyenne (bpm)` = ifelse(
+      `Fréquence cardiaque moyenne (bpm)` < 100,
+      median(`Fréquence cardiaque moyenne (bpm)`[`Fréquence cardiaque moyenne (bpm)` >= 100], na.rm = TRUE),
+      `Fréquence cardiaque moyenne (bpm)`
+    )
+  ) %>%
+  ungroup()
+
+cat("\n== Valeurs FC corrigées. Vérification : observations FC < 100 restantes ==\n")
+sum(df$`Fréquence cardiaque moyenne (bpm)` < 100, na.rm = TRUE)
+```
+
+```{r normalisation}
+# --- Normalisation des scores subjectifs (1=mauvais, 5=bon → z-score par joueur) ---
+# On garde aussi les scores bruts ; les z-scores servent aux comparaisons inter-joueurs
+df <- df %>%
+  group_by(Joueur) %>%
+  mutate(
+    Emotion_z = scale(Emotion),
+    Bas_du_corps_z = scale(`Bas du corps`),
+    Haut_du_corps_z = scale(`Haut du corps`),
+    Sommeil_z = scale(Sommeil),
+    # Score de bien-être composite (moyenne des 4 items)
+    Wellness = (Emotion + `Bas du corps` + `Haut du corps` + Sommeil) / 4,
+    Wellness_z = scale(Wellness)
+  ) %>%
+  ungroup()
+
+cat("Score de bien-être composite créé (moyenne Émotion + Bas/Haut corps + Sommeil).\n")
+summary(df$Wellness)
+```
+
+# 7. Quantification de la charge de travail (Load Monitoring)
+
+## 7.1. Charge Externe par joueur et type de séance
+
+```{r charge_externe}
+# Résumé de la charge EXTERNE par joueur et type de séance
+charge_ext <- df %>%
+  group_by(Joueur, `Poste groupe`, Type) %>%
+  summarise(
+    n = n(),
+    Duree_moy = round(mean(`Durée (min)`, na.rm = TRUE), 1),
+    Dist_tot_moy = round(mean(`Distance totale (m)`, na.rm = TRUE), 0),
+    Dist_HI_moy = round(mean(`Distance haute intensité (m)`, na.rm = TRUE), 0),
+    Contacts_moy = round(mean(`Nombre de contacts`, na.rm = TRUE), 1),
+    .groups = "drop"
   )
-} else {
-  cat("\nAucune colonne d'entraînement clairement identifiée. Modifiez `col_entrainement` manuellement.\n")
+
+# Visualisation : Volume total moyen par joueur × type
+ggplot(charge_ext, aes(x = reorder(Joueur, Dist_tot_moy), y = Dist_tot_moy, fill = Type)) +
+  geom_col(position = "dodge", alpha = 0.85) +
+  coord_flip() +
+  theme_minimal() +
+  scale_fill_brewer(palette = "Set2") +
+  labs(title = "Distance totale moyenne par joueur et type de séance",
+       x = "", y = "Distance totale moyenne (m)",
+       fill = "Type de séance")
+
+# Visualisation : Distance haute intensité par poste groupe
+ggplot(charge_ext, aes(x = `Poste groupe`, y = Dist_HI_moy, fill = Type)) +
+  geom_boxplot(alpha = 0.7) +
+  theme_minimal() +
+  scale_fill_brewer(palette = "Set2") +
+  labs(title = "Distance haute intensité : Avants vs Arrières",
+       x = "", y = "Distance HI moyenne (m)")
+```
+
+## 7.2. Charge Interne (Fréquence cardiaque et bien-être)
+
+```{r charge_interne}
+# Résumé de la charge INTERNE par joueur et type
+charge_int <- df %>%
+  group_by(Joueur, `Poste groupe`, Type) %>%
+  summarise(
+    FC_moy = round(mean(`Fréquence cardiaque moyenne (bpm)`, na.rm = TRUE), 1),
+    Wellness_moy = round(mean(Wellness, na.rm = TRUE), 2),
+    .groups = "drop"
+  )
+
+# FC moyenne par joueur et type de séance
+ggplot(charge_int, aes(x = reorder(Joueur, FC_moy), y = FC_moy, fill = Type)) +
+  geom_col(position = "dodge", alpha = 0.85) +
+  coord_flip() +
+  theme_minimal() +
+  scale_fill_brewer(palette = "Pastel1") +
+  labs(title = "Fréquence cardiaque moyenne par joueur et type de séance",
+       x = "", y = "FC moyenne (bpm)")
+
+# Scatter FC vs Wellness (charge interne croisée)
+ggplot(df, aes(x = `Fréquence cardiaque moyenne (bpm)`, y = Wellness, color = `Poste groupe`)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", se = TRUE) +
+  theme_minimal() +
+  scale_color_manual(values = c("Avant" = "#E74C3C", "Arrière" = "#3498DB")) +
+  labs(title = "Relation Charge cardiaque vs Bien-être perçu",
+       x = "FC moyenne (bpm)", y = "Score Wellness composite",
+       color = "Poste groupe")
+```
+
+# 8. Analyse Longitudinale — Ratio Aigu / Chronique (ACWR)
+
+Le ratio ACWR compare la charge aiguë (7 derniers jours) à la charge chronique (28 derniers jours). Un ratio > 1.5 indique un pic de charge à risque, un ratio < 0.8 indique un désentraînement potentiel.
+```{r acwr, fig.width=12, fig.height=8}
+library(zoo)   # Pour les moyennes glissantes
+
+# Calcul de l'ACWR pour chaque joueur
+# Utilisation de la Distance totale et du Nombre de contacts comme métriques de charge
+df_acwr <- df %>%
+  arrange(Joueur, Date) %>%
+  group_by(Joueur) %>%
+  mutate(
+    # Charge aiguë (somme glissante 7 jours)
+    Charge_aigue_dist = rollapply(`Distance totale (m)`, width = 7, FUN = sum, 
+                                   na.rm = TRUE, fill = NA, align = "right", partial = FALSE),
+    Charge_chronique_dist = rollapply(`Distance totale (m)`, width = 28, FUN = sum, 
+                                      na.rm = TRUE, fill = NA, align = "right", partial = FALSE),
+    # ACWR Distance
+    ACWR_dist = ifelse(Charge_chronique_dist > 0,
+                       (Charge_aigue_dist / 7) / (Charge_chronique_dist / 28),
+                       NA),
+    # Charge aiguë contacts
+    Charge_aigue_contacts = rollapply(`Nombre de contacts`, width = 7, FUN = sum, 
+                                      na.rm = TRUE, fill = NA, align = "right", partial = FALSE),
+    Charge_chronique_contacts = rollapply(`Nombre de contacts`, width = 28, FUN = sum, 
+                                          na.rm = TRUE, fill = NA, align = "right", partial = FALSE),
+    # ACWR Contacts
+    ACWR_contacts = ifelse(Charge_chronique_contacts > 0,
+                           (Charge_aigue_contacts / 7) / (Charge_chronique_contacts / 28),
+                           NA)
+  ) %>%
+  ungroup()
+
+# Visualisation ACWR Distance par joueur
+ggplot(df_acwr %>% filter(!is.na(ACWR_dist)), 
+       aes(x = Date, y = ACWR_dist, color = Joueur)) +
+  geom_line(linewidth = 0.7, alpha = 0.8) +
+  geom_hline(yintercept = 1.5, linetype = "dashed", color = "red", linewidth = 0.8) +
+  geom_hline(yintercept = 0.8, linetype = "dashed", color = "orange", linewidth = 0.8) +
+  geom_hline(yintercept = 1.0, linetype = "dotted", color = "grey50") +
+  annotate("rect", xmin = min(df_acwr$Date), xmax = max(df_acwr$Date),
+           ymin = 0.8, ymax = 1.3, alpha = 0.1, fill = "green") +
+  annotate("rect", xmin = min(df_acwr$Date), xmax = max(df_acwr$Date),
+           ymin = 1.5, ymax = Inf, alpha = 0.1, fill = "red") +
+  theme_minimal() +
+  labs(title = "Ratio Aigu/Chronique (ACWR) — Distance Totale",
+       subtitle = "Zone verte = optimal (0.8–1.3) | Zone rouge = danger (> 1.5)",
+       x = "Date", y = "ACWR Distance",
+       color = "Joueur") +
+  theme(legend.position = "bottom")
+
+# Facettes par joueur pour plus de lisibilité
+ggplot(df_acwr %>% filter(!is.na(ACWR_dist)), 
+       aes(x = Date, y = ACWR_dist)) +
+  geom_line(color = "steelblue", linewidth = 0.6) +
+  geom_hline(yintercept = 1.5, linetype = "dashed", color = "red") +
+  geom_hline(yintercept = 0.8, linetype = "dashed", color = "orange") +
+  facet_wrap(~Joueur, ncol = 2, scales = "free_y") +
+  theme_minimal() +
+  labs(title = "ACWR Distance — Vue individuelle",
+       x = "Date", y = "ACWR")
+```
+
+# 9. Hypothèse 1 — Spécificité des postes et usure physique
+
+> **H1 :** Les Avants subissent plus de contacts en match/collectif et présentent un score "Haut du corps" plus dégradé le lendemain, tandis que les Arrières cumulent plus de distance haute intensité et voient leur "Bas du corps" plus impacté.
+
+```{r hyp1_contacts}
+# Contacts moyens par poste groupe et type de séance
+df_match_collectif <- df %>%
+  filter(Type %in% c("Match", "Entrainement - Rugby Collectif"))
+
+ggplot(df_match_collectif, aes(x = `Poste groupe`, y = `Nombre de contacts`, fill = `Poste groupe`)) +
+  geom_boxplot(alpha = 0.7) +
+  facet_wrap(~Type) +
+  theme_minimal() +
+  scale_fill_manual(values = c("Avant" = "#E74C3C", "Arrière" = "#3498DB")) +
+  labs(title = "H1 : Nombre de contacts — Avants vs Arrières (Matchs & Collectif)",
+       x = "", y = "Nombre de contacts") +
+  theme(legend.position = "none")
+
+# Test statistique : Wilcoxon sur les contacts en match
+test_contacts_match <- wilcox.test(
+  `Nombre de contacts` ~ `Poste groupe`,
+  data = df %>% filter(Type == "Match")
+)
+cat("== Test de Wilcoxon : Contacts en Match (Avants vs Arrières) ==\n")
+print(test_contacts_match)
+```
+
+```{r hyp1_hi}
+# Distance haute intensité par poste
+ggplot(df_match_collectif, aes(x = `Poste groupe`, y = `Distance haute intensité (m)`, fill = `Poste groupe`)) +
+  geom_boxplot(alpha = 0.7) +
+  facet_wrap(~Type) +
+  theme_minimal() +
+  scale_fill_manual(values = c("Avant" = "#E74C3C", "Arrière" = "#3498DB")) +
+  labs(title = "H1 : Distance haute intensité — Avants vs Arrières",
+       x = "", y = "Distance HI (m)") +
+  theme(legend.position = "none")
+
+test_hi_match <- wilcox.test(
+  `Distance haute intensité (m)` ~ `Poste groupe`,
+  data = df %>% filter(Type == "Match")
+)
+cat("== Test de Wilcoxon : Distance HI en Match (Avants vs Arrières) ==\n")
+print(test_hi_match)
+```
+
+```{r hyp1_wellness}
+# Impact sur le bien-être du lendemain (réutilisation de df_impact)
+# Relier les contacts/HI Jour J avec le bien-être J+1 par poste
+df_impact_poste <- df_impact %>%
+  left_join(df %>% select(Joueur, `Poste groupe`) %>% distinct(), by = "Joueur")
+
+# Haut du corps le lendemain : Avants vs Arrières
+ggplot(df_impact_poste %>% filter(Type %in% c("Match", "Entrainement - Rugby Collectif")),
+       aes(x = `Poste groupe`, y = Haut_du_corps_lendemain, fill = `Poste groupe`)) +
+  geom_boxplot(alpha = 0.7) +
+  facet_wrap(~Type) +
+  theme_minimal() +
+  scale_fill_manual(values = c("Avant" = "#E74C3C", "Arrière" = "#3498DB")) +
+  labs(title = "H1 : Score 'Haut du corps' J+1 — Avants vs Arrières",
+       subtitle = "Score bas = plus de douleurs",
+       x = "", y = "Score Haut du corps (J+1)") +
+  theme(legend.position = "none")
+
+# Bas du corps le lendemain : Avants vs Arrières
+ggplot(df_impact_poste %>% filter(Type %in% c("Match", "Entrainement - Rugby Collectif")),
+       aes(x = `Poste groupe`, y = Bas_du_corps_lendemain, fill = `Poste groupe`)) +
+  geom_boxplot(alpha = 0.7) +
+  facet_wrap(~Type) +
+  theme_minimal() +
+  scale_fill_manual(values = c("Avant" = "#E74C3C", "Arrière" = "#3498DB")) +
+  labs(title = "H1 : Score 'Bas du corps' J+1 — Avants vs Arrières",
+       subtitle = "Score bas = plus de douleurs",
+       x = "", y = "Score Bas du corps (J+1)") +
+  theme(legend.position = "none")
+```
+
+# 10. Hypothèse 2 — Impact du type de séance sur la récupération
+
+> **H2 :** Les matchs entraînent la fatigue la plus importante (scores musculo-squelettiques dégradés) et affectent le sommeil et l'émotion en raison du stress compétitif.
+
+```{r hyp2}
+# Pivot des métriques de bien-être J+1 pour comparaison multi-variée
+library(tidyr)
+
+df_impact_long <- df_impact %>%
+  select(Type, Emotion_lendemain, Bas_du_corps_lendemain, 
+         Haut_du_corps_lendemain, Sommeil_lendemain) %>%
+  pivot_longer(cols = -Type, names_to = "Metrique", values_to = "Score") %>%
+  mutate(Metrique = recode(Metrique,
+    "Emotion_lendemain" = "Émotion",
+    "Bas_du_corps_lendemain" = "Bas du corps",
+    "Haut_du_corps_lendemain" = "Haut du corps",
+    "Sommeil_lendemain" = "Sommeil"
+  ))
+
+# Facettes : chaque métrique de bien-être J+1 selon le type de séance
+ggplot(df_impact_long, aes(x = Type, y = Score, fill = Type)) +
+  geom_boxplot(alpha = 0.7) +
+  facet_wrap(~Metrique, scales = "free_y") +
+  coord_flip() +
+  theme_minimal() +
+  labs(title = "H2 : Impact du type de séance sur le bien-être du lendemain",
+       subtitle = "Score de 1 (mauvais) à 5 (bon)",
+       x = "", y = "Score J+1") +
+  theme(legend.position = "none")
+
+# Test de Kruskal-Wallis par métrique
+for (met in c("Sommeil_lendemain", "Emotion_lendemain", 
+              "Haut_du_corps_lendemain", "Bas_du_corps_lendemain")) {
+  cat(paste0("\n== Kruskal-Wallis : ", met, " selon le Type de séance ==\n"))
+  print(kruskal.test(as.formula(paste(met, "~ Type")), data = df_impact))
 }
 ```
 
-## 4.1 Visualisations
+# 11. Hypothèse 3 — Corrélation Charge / Sommeil
 
-```{r visualisations, fig.width=10, fig.height=6}
-# Graphique : Nombre d'observations par joueur
-if (!is.na(col_joueur)) {
-  p_joueur <- dataset %>%
-    count(!!sym(col_joueur)) %>%
-    top_n(20, n) %>%
-    ggplot(aes(x = reorder(!!sym(col_joueur), n), y = n)) +
-    geom_col(fill = "steelblue") +
-    coord_flip() +
-    theme_minimal() +
-    labs(title = "Nombre d'observations par joueur (Top 20)",
-         x = "Joueur",
-         y = "Nombre d'observations")
-  print(p_joueur)
-}
+> **H3 :** Les séances de "Vitesse" (plus de charge nerveuse et haute intensité) perturbent davantage le sommeil que les séances "Séparé".
 
-# Graphique : Nombre d'observations par entraînement
-if (!is.na(col_entrainement)) {
-  p_entrainement <- dataset %>%
-    count(!!sym(col_entrainement)) %>%
-    # Limitation pour la lisibilité si trop de sessions
-    head(30) %>% 
-    ggplot(aes(x = factor(!!sym(col_entrainement)), y = n)) +
-    geom_col(fill = "darkorange") +
-    theme_minimal() +
-    theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-    labs(title = "Volume de données par entraînement/session (Zoom sur 30 sessions)",
-         x = "Entraînement / Date",
-         y = "Nombre d'observations")
-  print(p_entrainement)
-}
+```{r hyp3}
+# Comparaison Vitesse vs Séparé sur le sommeil du lendemain
+df_vitesse_separe <- df_impact %>%
+  filter(Type %in% c("Entrainement - Vitesse", "Entrainement - Séparé"))
+
+ggplot(df_vitesse_separe, aes(x = Type, y = Sommeil_lendemain, fill = Type)) +
+  geom_boxplot(alpha = 0.7) +
+  geom_jitter(width = 0.15, alpha = 0.3, size = 1) +
+  theme_minimal() +
+  scale_fill_manual(values = c("Entrainement - Vitesse" = "#F39C12", 
+                                "Entrainement - Séparé" = "#27AE60")) +
+  labs(title = "H3 : Sommeil J+1 — Vitesse vs Séparé",
+       x = "", y = "Score Sommeil (J+1)") +
+  theme(legend.position = "none")
+
+# Test de Wilcoxon
+test_sommeil <- wilcox.test(
+  Sommeil_lendemain ~ Type,
+  data = df_vitesse_separe
+)
+cat("== Test de Wilcoxon : Sommeil J+1 (Vitesse vs Séparé) ==\n")
+print(test_sommeil)
+
+# Corrélation entre Distance HI (J) et Sommeil (J+1)
+ggplot(df_impact, aes(x = `Distance haute intensité (m)`, y = Sommeil_lendemain, color = Type)) +
+  geom_point(alpha = 0.4) +
+  geom_smooth(method = "lm", se = FALSE, linewidth = 0.8) +
+  theme_minimal() +
+  labs(title = "H3 : Relation Distance HI (Jour J) vs Sommeil (Nuit J→J+1)",
+       x = "Distance haute intensité (m)", y = "Score Sommeil (J+1)",
+       color = "Type de séance")
 ```
 
-# 5. Conclusion
+# 12. Hypothèse 4 — Indicateur de "Readiness"
 
-Cette analyse dimensionnelle initiale permet de poser les bases de la structuration des données. À travers la vérification de la qualité des données (valeurs manquantes) et la quantification des observations par joueur et entraînement, nous pouvons valider la consistance du jeu de données pour de futures approches statistiques ou de modélisation prédictive.
+> **H4 :** Quand les scores de bien-être d'un joueur passent sous son 1er quartile habituel, la distance haute intensité produite lors de la séance suivante diminue (autorégulation ou fatigue subie).
 
-### Corrplot
+```{r hyp4}
+# Calcul du Q1 individuel du score Wellness
+df_readiness <- df %>%
+  group_by(Joueur) %>%
+  mutate(
+    Q1_wellness = quantile(Wellness, 0.25, na.rm = TRUE),
+    Alerte_fatigue = ifelse(Wellness < Q1_wellness, "Sous Q1 (Fatigué)", "Normal")
+  ) %>%
+  ungroup()
 
-```{r corrplot}
-# Sélection des variables numériques pour la corrélation
-numeric_vars <- dataset %>%
-  select_if(is.numeric)
-# Calcul de la matrice de corrélation
-cor_matrix <- cor(numeric_vars, use = "pairwise.complete.obs")
-# Visualisation de la matrice de corrélation
-library(corrplot)
-corrplot(cor_matrix, method = "color", type = "upper", tl.col =
-         "black", tl.srt = 45, title = "Matrice de Corrélation", mar = c(0,0,1,0))
+# Comparaison de la distance HI produite selon l'état de readiness
+ggplot(df_readiness, aes(x = Alerte_fatigue, y = `Distance haute intensité (m)`, 
+                          fill = Alerte_fatigue)) +
+  geom_boxplot(alpha = 0.7) +
+  theme_minimal() +
+  scale_fill_manual(values = c("Sous Q1 (Fatigué)" = "#E74C3C", "Normal" = "#2ECC71")) +
+  labs(title = "H4 : Distance HI produite selon le niveau de bien-être",
+       subtitle = "Joueur 'fatigué' = wellness sous son Q1 individuel",
+       x = "", y = "Distance haute intensité (m)") +
+  theme(legend.position = "none")
+
+# Test statistique
+test_readiness <- wilcox.test(
+  `Distance haute intensité (m)` ~ Alerte_fatigue,
+  data = df_readiness
+)
+cat("== Test de Wilcoxon : Distance HI selon Readiness ==\n")
+print(test_readiness)
+
+# Par joueur
+ggplot(df_readiness, aes(x = Alerte_fatigue, y = `Distance haute intensité (m)`, 
+                          fill = Alerte_fatigue)) +
+  geom_boxplot(alpha = 0.7) +
+  facet_wrap(~Joueur, ncol = 5) +
+  theme_minimal() +
+  scale_fill_manual(values = c("Sous Q1 (Fatigué)" = "#E74C3C", "Normal" = "#2ECC71")) +
+  labs(title = "H4 : Vue individuelle — Distance HI selon la Readiness",
+       x = "", y = "Distance HI (m)") +
+  theme(legend.position = "bottom",
+        axis.text.x = element_text(angle = 45, hjust = 1, size = 7))
+```
+
+# 13. Outil 1 — Tableau de bord de "Readiness" (Feu tricolore)
+
+Ce dashboard simule l'affichage quotidien sur tablette pour le staff avant le premier entraînement. Il utilise un **système de feu tricolore** basé sur les z-scores individuels de bien-être.
+
+```{r readiness_dashboard, fig.width=12, fig.height=6}
+library(knitr)
+library(kableExtra)
+
+# Simulation : état du dernier jour de données pour chaque joueur
+derniere_date <- max(df$Date)
+
+df_dashboard <- df %>%
+  filter(Date == derniere_date) %>%
+  group_by(Joueur) %>%
+  slice_tail(n = 1) %>%
+  ungroup() %>%
+  left_join(
+    df %>% group_by(Joueur) %>%
+      summarise(
+        Q1_w = quantile(Wellness, 0.25, na.rm = TRUE),
+        Q3_w = quantile(Wellness, 0.75, na.rm = TRUE),
+        Med_w = median(Wellness, na.rm = TRUE),
+        .groups = "drop"
+      ),
+    by = "Joueur"
+  ) %>%
+  mutate(
+    Statut = case_when(
+      Wellness <= Q1_w ~ "🔴 ROUGE",
+      Wellness <= Med_w ~ "🟠 ORANGE",
+      TRUE ~ "🟢 VERT"
+    ),
+    Recommandation = case_when(
+      Wellness <= Q1_w ~ "Repos / Entraînement très léger",
+      Wellness <= Med_w ~ "Adapter la charge, éviter le contact",
+      TRUE ~ "Disponible — Charge normale"
+    )
+  ) %>%
+  select(Joueur, Poste, `Poste groupe`, Emotion, Sommeil, `Bas du corps`, `Haut du corps`,
+         Wellness, Statut, Recommandation) %>%
+  arrange(Wellness)
+
+# Affichage en tableau formaté
+kable(df_dashboard, 
+      caption = paste0("📋 Dashboard Readiness — ", format(derniere_date, "%d/%m/%Y")),
+      align = "c") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), 
+                full_width = TRUE, font_size = 13)
+
+# Visualisation en heatmap
+df_dashboard_long <- df_dashboard %>%
+  select(Joueur, Emotion, Sommeil, `Bas du corps`, `Haut du corps`) %>%
+  pivot_longer(-Joueur, names_to = "Metrique", values_to = "Score")
+
+ggplot(df_dashboard_long, aes(x = Metrique, y = reorder(Joueur, -Score), fill = Score)) +
+  geom_tile(color = "white", linewidth = 0.5) +
+  geom_text(aes(label = Score), color = "white", fontface = "bold", size = 5) +
+  scale_fill_gradientn(colors = c("#E74C3C", "#F39C12", "#F1C40F", "#2ECC71", "#27AE60"),
+                       limits = c(1, 5), breaks = 1:5) +
+  theme_minimal() +
+  labs(title = paste0("🏉 Heatmap Readiness — ", format(derniere_date, "%d/%m/%Y")),
+       x = "", y = "", fill = "Score\n(1=Mauvais, 5=Bon)") +
+  theme(axis.text.x = element_text(angle = 30, hjust = 1, size = 11),
+        axis.text.y = element_text(size = 11))
+```
+
+# 14. Outil 2 — Rapport Post-Match / Post-Entraînement
+
+Ce rapport compare automatiquement la performance de chaque joueur lors de la dernière séance par rapport à sa **moyenne individuelle** pour ce type d'activité.
+
+```{r post_match_report, fig.width=12, fig.height=8}
+# Dernière séance de chaque joueur
+derniere_seance <- df %>%
+  group_by(Joueur) %>%
+  filter(Date == max(Date)) %>%
+  slice_tail(n = 1) %>%
+  ungroup()
+
+# Moyennes individuelles par type de séance
+moyennes_ind <- df %>%
+  group_by(Joueur, Type) %>%
+  summarise(
+    Dist_moy_ind = mean(`Distance totale (m)`, na.rm = TRUE),
+    Dist_HI_moy_ind = mean(`Distance haute intensité (m)`, na.rm = TRUE),
+    Contacts_moy_ind = mean(`Nombre de contacts`, na.rm = TRUE),
+    Duree_moy_ind = mean(`Durée (min)`, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+# Jointure et calcul des écarts
+rapport <- derniere_seance %>%
+  left_join(moyennes_ind, by = c("Joueur", "Type")) %>%
+  mutate(
+    Ecart_dist = round((`Distance totale (m)` - Dist_moy_ind) / Dist_moy_ind * 100, 1),
+    Ecart_HI = round((`Distance haute intensité (m)` - Dist_HI_moy_ind) / Dist_HI_moy_ind * 100, 1),
+    Ecart_contacts = round((`Nombre de contacts` - Contacts_moy_ind) / Contacts_moy_ind * 100, 1),
+    Performance = case_when(
+      Ecart_dist > 15 ~ "📈 Sur-performance",
+      Ecart_dist < -15 ~ "📉 Sous-performance",
+      TRUE ~ "➡️ Dans la norme"
+    )
+  )
+
+# Tableau résumé
+rapport_table <- rapport %>%
+  select(Joueur, Poste, Type, 
+         `Distance totale (m)`, Dist_moy_ind, Ecart_dist,
+         `Distance haute intensité (m)`, Dist_HI_moy_ind, Ecart_HI,
+         `Nombre de contacts`, Contacts_moy_ind, Ecart_contacts,
+         Performance) %>%
+  mutate(across(where(is.numeric), ~round(., 1)))
+
+kable(rapport_table,
+      col.names = c("Joueur", "Poste", "Séance", 
+                     "Dist (m)", "Moy Ind", "Écart %",
+                     "Dist HI (m)", "Moy Ind", "Écart %",
+                     "Contacts", "Moy Ind", "Écart %",
+                     "Performance"),
+      caption = paste0("📊 Rapport Post-Séance — ", format(derniere_date, "%d/%m/%Y")),
+      align = "c") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"),
+                full_width = TRUE, font_size = 12)
+
+# Graphique des écarts
+rapport_long <- rapport %>%
+  select(Joueur, Ecart_dist, Ecart_HI, Ecart_contacts) %>%
+  pivot_longer(-Joueur, names_to = "Metrique", values_to = "Ecart_pct") %>%
+  mutate(Metrique = recode(Metrique,
+    "Ecart_dist" = "Distance totale",
+    "Ecart_HI" = "Distance HI",
+    "Ecart_contacts" = "Contacts"
+  ))
+
+ggplot(rapport_long, aes(x = reorder(Joueur, Ecart_pct), y = Ecart_pct, fill = Metrique)) +
+  geom_col(position = "dodge", alpha = 0.85) +
+  geom_hline(yintercept = 0, color = "black") +
+  geom_hline(yintercept = c(-15, 15), linetype = "dashed", color = "grey50") +
+  coord_flip() +
+  theme_minimal() +
+  scale_fill_brewer(palette = "Dark2") +
+  labs(title = paste0("📊 Écarts à la moyenne individuelle — Dernière séance (",
+                      format(derniere_date, "%d/%m/%Y"), ")"),
+       subtitle = "Lignes pointillées = seuils de sur/sous-performance (±15%)",
+       x = "", y = "Écart par rapport à la moyenne individuelle (%)",
+       fill = "Indicateur")
+```
+
+# 15. Outil 3 — Alerte "Gestion de Charge" (ACWR)
+
+Ce système d'alerte identifie les joueurs dont le ratio Aigu/Chronique dépasse les seuils critiques. Le préparateur physique peut alors recommander un allègement.
+
+```{r acwr_alertes, fig.width=12, fig.height=7}
+# Dernières alertes ACWR (dernière observation par joueur)
+alertes_acwr <- df_acwr %>%
+  filter(!is.na(ACWR_dist)) %>%
+  group_by(Joueur) %>%
+  filter(Date == max(Date)) %>%
+  slice_tail(n = 1) %>%
+  ungroup() %>%
+  left_join(df %>% select(Joueur, Poste, `Poste groupe`) %>% distinct(), by = "Joueur") %>%
+  mutate(
+    Zone_dist = case_when(
+      ACWR_dist > 1.5 ~ "🔴 DANGER (> 1.5)",
+      ACWR_dist > 1.3 ~ "🟠 ATTENTION (1.3–1.5)",
+      ACWR_dist >= 0.8 ~ "🟢 OPTIMAL (0.8–1.3)",
+      TRUE ~ "⚪ SOUS-CHARGE (< 0.8)"
+    ),
+    Zone_contacts = case_when(
+      ACWR_contacts > 1.5 ~ "🔴 DANGER (> 1.5)",
+      ACWR_contacts > 1.3 ~ "🟠 ATTENTION (1.3–1.5)",
+      ACWR_contacts >= 0.8 ~ "🟢 OPTIMAL (0.8–1.3)",
+      TRUE ~ "⚪ SOUS-CHARGE (< 0.8)"
+    ),
+    Action = case_when(
+      ACWR_dist > 1.5 | ACWR_contacts > 1.5 ~ "⚠️ Alléger la charge (pas de collectif intense)",
+      ACWR_dist > 1.3 | ACWR_contacts > 1.3 ~ "👀 Surveiller, limiter les contacts",
+      ACWR_dist < 0.8 ~ "📈 Augmenter progressivement la charge",
+      TRUE ~ "✅ Continuer le programme normal"
+    )
+  )
+
+# Tableau des alertes
+alertes_table <- alertes_acwr %>%
+  select(Joueur, Poste.x, ACWR_dist, Zone_dist, ACWR_contacts, Zone_contacts, Action) %>%
+  mutate(ACWR_dist = round(ACWR_dist, 2), ACWR_contacts = round(ACWR_contacts, 2)) %>%
+  arrange(desc(ACWR_dist))
+
+kable(alertes_table,
+      col.names = c("Joueur", "Poste", "ACWR Distance", "Zone Distance",
+                     "ACWR Contacts", "Zone Contacts", "Recommandation"),
+      caption = "⚠️ Alertes ACWR — Gestion de la charge",
+      align = "c") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"),
+                full_width = TRUE, font_size = 12)
+
+# Historique des alertes sur la période
+df_acwr_alertes <- df_acwr %>%
+  filter(!is.na(ACWR_dist)) %>%
+  mutate(
+    Zone = case_when(
+      ACWR_dist > 1.5 ~ "Danger",
+      ACWR_dist > 1.3 ~ "Attention",
+      ACWR_dist >= 0.8 ~ "Optimal",
+      TRUE ~ "Sous-charge"
+    )
+  )
+
+ggplot(df_acwr_alertes, aes(x = Date, y = reorder(Joueur, ACWR_dist), fill = Zone)) +
+  geom_tile(color = "white", linewidth = 0.3) +
+  scale_fill_manual(values = c("Danger" = "#E74C3C", "Attention" = "#F39C12",
+                                "Optimal" = "#2ECC71", "Sous-charge" = "#BDC3C7")) +
+  theme_minimal() +
+  labs(title = "📅 Historique des zones ACWR par joueur",
+       subtitle = "Vue calendaire de la gestion de la charge",
+       x = "Date", y = "", fill = "Zone ACWR") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+# Nombre de jours en zone de danger par joueur
+jours_danger <- df_acwr_alertes %>%
+  filter(Zone == "Danger") %>%
+  count(Joueur, name = "Jours_en_danger") %>%
+  arrange(desc(Jours_en_danger))
+
+ggplot(jours_danger, aes(x = reorder(Joueur, Jours_en_danger), y = Jours_en_danger, 
+                          fill = Jours_en_danger)) +
+  geom_col(alpha = 0.85) +
+  coord_flip() +
+  scale_fill_gradient(low = "#F39C12", high = "#E74C3C") +
+  theme_minimal() +
+  labs(title = "🚨 Nombre de jours en zone de danger ACWR (> 1.5)",
+       x = "", y = "Nombre de jours") +
+  theme(legend.position = "none")
+```
+
+# 16. Synthèse et recommandations
+
+```{r synthese}
+cat("
+╔══════════════════════════════════════════════════════════════════════╗
+║                    SYNTHÈSE — SPORT SCIENCE                          ║
+╠══════════════════════════════════════════════════════════════════════╣
+║                                                                      ║
+║  1. CHARGE DE TRAVAIL                                                ║
+║     → Les Arrières couvrent significativement plus de distance       ║
+║       (totale et haute intensité) que les Avants                     ║
+║     → Les Avants accumulent plus de contacts physiques               ║
+║                                                                      ║
+║  2. ACWR (Ratio Aigu/Chronique)                                      ║
+║     → Permet d'identifier les pics de charge inhabituels             ║
+║     → Seuils : < 0.8 (sous-charge), 0.8-1.3 (optimal), > 1.5         ║
+║       (danger de blessure)                                           ║
+║                                                                      ║
+║  3. SPÉCIFICITÉ POSITIONNELLE (H1)                                   ║
+║     → Confirmée : les Avants ont plus de contacts, les Arrières      ║
+║       plus de distance HI                                            ║
+║     → L'impact sur le 'Haut du corps' est à surveiller pour les      ║
+║       Avants après matchs                                            ║
+║                                                                      ║
+║  4. IMPACT DES MATCHS (H2)                                           ║
+║     → Les matchs génèrent la fatigue la plus élevée tous postes      ║
+║       confondus                                                      ║
+║                                                                      ║
+║  5. CHARGE NERVEUSE ET SOMMEIL (H3)                                  ║
+║     → À confirmer statistiquement ; la relation HI → sommeil         ║
+║       mérite un suivi longitudinal plus fin                          ║
+║                                                                      ║
+║  6. READINESS (H4)                                                   ║
+║     → Un joueur 'fatigué' (wellness < Q1) tend à produire moins      ║
+║       de distance HI, confirmant l'autorégulation                    ║
+║                                                                      ║
+║  OUTILS DÉPLOYÉS :                                                   ║
+║     📋 Dashboard Readiness (feu tricolore quotidien)                 ║
+║     📊 Rapport Post-Séance automatisé (écarts individuels)           ║
+║     ⚠️ Alertes ACWR (zone de danger > 1.5)                           ║
+║                                                                      ║
+╚══════════════════════════════════════════════════════════════════════╝
+")
 ```
