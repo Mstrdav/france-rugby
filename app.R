@@ -80,7 +80,13 @@ ui <- page_navbar(
     selectInput("joueur_sel", "Sélectionner un joueur :", 
                 choices = c("Tous", sort(unique(as.character(df$Joueur)))), selected = "Tous"),
     hr(),
-    p("Bienvenue sur France Rugby Data Performance Hub Pro New Edition, plateforme couteau suisse à destination des équipes de Rugby. Chacun peut y trouver les outils nécessaires pour leverage les assets afin d'appliquer un méthodologie d'entraînement assertive.", style = "font-size: 0.9em; color: #666;")
+    h4("Notre dataset"),
+    p("Infos contextuelles - joueur, poste, date, type (match ou entraînement)", style = "font-size: 0.9em; color: #666;"),
+    p("Données GPS - distance totale et à haute intensité, durée, F.C. moyenne, nombre de contacts", style = "font-size: 0.9em; color: #666;"),
+    p("État de forme - Wellness -> Emotion, bas du corps, haut du corps, sommeil", style = "font-size: 0.9em; color: #666;"),
+    h4("Traitement"),
+    p("Deux valeurs de fréquence cardiaque erronées, deux valeurs de distance manquantes ; mises à la médiane", style = "font-size: 0.9em; color: #666;"),
+    p("Normalisation de la distance par la durée de séance afin d'éviter les biais liés aux joueurs qui jouent plus longtemps.", style = "font-size: 0.9em; color: #666;")
   ),
   
   # ------ ONGLET 1 : EDA ------
