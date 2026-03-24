@@ -1,33 +1,170 @@
 ---
-title: "EDA"
-output: html_document
+title: "Analyse Exploratoire des Données (EDA) - Rugby"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    theme: flatly
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
 
-# 1. Exploratory Data Analysis (EDA)
+# 1. Introduction & Importation
 
-```{r librairies, echo=FALSE}
-# Load necessary libraries
+Cette analyse exploratoire porte sur le jeu de données `rugby.xlsx`. Nous allons examiner la structure dimensionnelle globale, les différentes variables, ainsi que la répartition des joueurs et des entraînements au sein des données.
+
+```{r librairies}
+# Chargement des librairies nécessaires
 library(ggplot2)
 library(dplyr)
 library(readxl)
+library(tidyr)
 ```
 
-```{r import, echo=FALSE}
-# Import the dataset
+```{r import}
+# Importation du jeu de données
 dataset <- read_excel("data/rugby.xlsx")
+# write to CSV
+write.csv(dataset, "data/rugby.csv", row.names = FALSE)
 ```
 
-## Summary of the dataset, head, and structure
+# 2. Analyse Dimensionnelle Globale
 
-```{r summary, echo=FALSE}
-# Summary of the dataset
-summary(dataset)
-# Head of the dataset
+```{r dimension}
+# Dimensions du jeu de données (lignes, colonnes)
+dim_data <- dim(dataset)
+cat("Le jeu de données contient", dim_data[1], "observations (lignes) et", dim_data[2], "variables (colonnes).\n")
+
+# Aperçu des premières lignes
 head(dataset)
-# Structure of the dataset
+```
+
+# 3. Analyse des Variables
+
+Nous allons inspecter le type de chaque variable ainsi que s'informer sur la présence éventuelle de valeurs manquantes.
+
+```{r structure}
+# Structure des variables (types, etc.)
 str(dataset)
+
+# Résumé statistique des variables
+summary(dataset)
+
+# Nom des colonnes :
+colonnes <- colnames(dataset)
+cat("\n--- Noms des colonnes ---\n")
+print(colonnes)
+
+# Calcul du nombre de valeurs manquantes par variable
+na_counts <- sapply(dataset, function(x) sum(is.na(x)))
+cat("\n--- Variables avec des valeurs manquantes ---\n")
+na_counts_filtered <- na_counts[na_counts > 0]
+if(length(na_counts_filtered) > 0) {
+  print(na_counts_filtered)
+} else {
+  cat("Aucune valeur manquante détectée.\n")
+}
+```
+
+# 4. Analyse des Entraînements et des Joueurs
+
+Dans cette section transversale, nous allons chercher à extraire des statistiques sur les entraînements et les joueurs.
+*Note : Le code tente d'identifier les colonnes automatiquement (ex: "player", "nom", "session", "date"). Il est recommandé de vérifier les noms de colonnes et de les ajuster si nécessaire.*
+
+```{r entrainements_joueurs}
+# Identification automatique potentielle des colonnes 
+noms_colonnes <- colnames(dataset)
+
+# Cherchons des colonnes pour le joueur
+col_joueur <- grep("player|joueur|nom|id", noms_colonnes, ignore.case = TRUE, value = TRUE)[1]
+
+# Cherchons des colonnes pour l'entraînement/session
+col_entrainement <- grep("session|entrainement|training|date", noms_colonnes, ignore.case = TRUE, value = TRUE)[1]
+
+# Analyse Joueurs
+if (!is.na(col_joueur)) {
+  cat("\nVariable identifiant les joueurs :", col_joueur, "\n")
+  n_joueurs <- n_distinct(dataset[[col_joueur]])
+  cat("Nombre de joueurs distincts :", n_joueurs, "\n")
+  
+  cat("\nRépartition des observations par joueur (Top 10) :\n")
+  print(
+    dataset %>%
+      count(!!sym(col_joueur), sort = TRUE) %>%
+      head(10)
+  )
+} else {
+  cat("\nAucune colonne de joueur clairement identifiée. Modifiez `col_joueur` manuellement.\n")
+}
+
+# Analyse Entraînements
+if (!is.na(col_entrainement)) {
+  cat("\nVariable identifiant les entraînements :", col_entrainement, "\n")
+  n_entrainements <- n_distinct(dataset[[col_entrainement]])
+  cat("Nombre d'entraînements distincts :", n_entrainements, "\n")
+  
+  cat("\nRépartition des observations par entraînement (Top 10) :\n")
+  print(
+    dataset %>%
+      count(!!sym(col_entrainement), sort = TRUE) %>%
+      head(10)
+  )
+} else {
+  cat("\nAucune colonne d'entraînement clairement identifiée. Modifiez `col_entrainement` manuellement.\n")
+}
+```
+
+## 4.1 Visualisations
+
+```{r visualisations, fig.width=10, fig.height=6}
+# Graphique : Nombre d'observations par joueur
+if (!is.na(col_joueur)) {
+  p_joueur <- dataset %>%
+    count(!!sym(col_joueur)) %>%
+    top_n(20, n) %>%
+    ggplot(aes(x = reorder(!!sym(col_joueur), n), y = n)) +
+    geom_col(fill = "steelblue") +
+    coord_flip() +
+    theme_minimal() +
+    labs(title = "Nombre d'observations par joueur (Top 20)",
+         x = "Joueur",
+         y = "Nombre d'observations")
+  print(p_joueur)
+}
+
+# Graphique : Nombre d'observations par entraînement
+if (!is.na(col_entrainement)) {
+  p_entrainement <- dataset %>%
+    count(!!sym(col_entrainement)) %>%
+    # Limitation pour la lisibilité si trop de sessions
+    head(30) %>% 
+    ggplot(aes(x = factor(!!sym(col_entrainement)), y = n)) +
+    geom_col(fill = "darkorange") +
+    theme_minimal() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+    labs(title = "Volume de données par entraînement/session (Zoom sur 30 sessions)",
+         x = "Entraînement / Date",
+         y = "Nombre d'observations")
+  print(p_entrainement)
+}
+```
+
+# 5. Conclusion
+
+Cette analyse dimensionnelle initiale permet de poser les bases de la structuration des données. À travers la vérification de la qualité des données (valeurs manquantes) et la quantification des observations par joueur et entraînement, nous pouvons valider la consistance du jeu de données pour de futures approches statistiques ou de modélisation prédictive.
+
+### Corrplot
+
+```{r corrplot}
+# Sélection des variables numériques pour la corrélation
+numeric_vars <- dataset %>%
+  select_if(is.numeric)
+# Calcul de la matrice de corrélation
+cor_matrix <- cor(numeric_vars, use = "pairwise.complete.obs")
+# Visualisation de la matrice de corrélation
+library(corrplot)
+corrplot(cor_matrix, method = "color", type = "upper", tl.col =
+         "black", tl.srt = 45, title = "Matrice de Corrélation", mar = c(0,0,1,0))
 ```

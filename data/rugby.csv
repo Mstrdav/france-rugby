@@ -1,0 +1,501 @@
+"Joueur","Poste","Poste groupe","Date","Durée (min)","Distance totale (m)","Distance haute intensité (m)","Fréquence cardiaque moyenne (bpm)","Type","Nombre de contacts","Emotion","Bas du corps","Haut du corps","Sommeil"
+"Alldritt","3e ligne","Avant",2026-01-05,110,8850,2144,152,"Entrainement - Séparé",1,2,3,3,3
+"Alldritt","3e ligne","Avant",2026-01-06,79,6918,1138,156,"Entrainement - Vitesse",11,3,5,3,4
+"Alldritt","3e ligne","Avant",2026-01-08,100,8006,1788,154,"Entrainement - Rugby Collectif",15,2,3,3,4
+"Alldritt","3e ligne","Avant",2026-01-09,76,5329,1543,153,"Entrainement - Rugby Collectif",7,2,3,3,3
+"Alldritt","3e ligne","Avant",2026-01-10,73,3980,1096,159,"Match",19,3,4,4,4
+"Alldritt","3e ligne","Avant",2026-01-12,83,6419,1178,157,"Entrainement - Vitesse",11,4,3,3,2
+"Alldritt","3e ligne","Avant",2026-01-13,71,4484,1374,156,"Entrainement - Rugby Collectif",7,3,3,2,3
+"Alldritt","3e ligne","Avant",2026-01-15,75,6438,1773,156,"Entrainement - Vitesse",15,3,5,3,4
+"Alldritt","3e ligne","Avant",2026-01-16,75,5273,1414,159,"Entrainement - Vitesse",8,2,3,2,3
+"Alldritt","3e ligne","Avant",2026-01-17,32,2318,351,158,"Match",6,5,2,3,3
+"Alldritt","3e ligne","Avant",2026-01-19,74,5542,1685,152,"Entrainement - Séparé",12,3,3,3,3
+"Alldritt","3e ligne","Avant",2026-01-20,72,4904,829,156,"Entrainement - Séparé",10,3,3,3,3
+"Alldritt","3e ligne","Avant",2026-01-22,87,5455,911,160,"Entrainement - Rugby Collectif",8,2,3,2,2
+"Alldritt","3e ligne","Avant",2026-01-23,68,4656,922,153,"Entrainement - Vitesse",14,3,2,3,2
+"Alldritt","3e ligne","Avant",2026-01-24,67,3890,832,154,"Match",19,4,3,4,3
+"Alldritt","3e ligne","Avant",2026-01-26,84,6362,1393,155,"Entrainement - Vitesse",8,3,3,3,2
+"Alldritt","3e ligne","Avant",2026-01-27,61,3609,902,159,"Entrainement - Rugby Collectif",15,3,2,2,1
+"Alldritt","3e ligne","Avant",2026-01-29,96,6575,2152,152,"Entrainement - Rugby Collectif",1,3,3,2,3
+"Alldritt","3e ligne","Avant",2026-01-30,60,4342,1134,158,"Entrainement - Vitesse",5,2,3,2,3
+"Alldritt","3e ligne","Avant",2026-01-31,85,4694,870,157,"Match",18,3,3,3,3
+"Alldritt","3e ligne","Avant",2026-02-02,110,8700,1638,156,"Entrainement - Rugby Collectif",5,3,4,5,4
+"Alldritt","3e ligne","Avant",2026-02-03,75,4624,807,158,"Entrainement - Séparé",12,2,3,3,2
+"Alldritt","3e ligne","Avant",2026-02-05,80,6367,1640,161,"Entrainement - Vitesse",15,3,3,3,4
+"Alldritt","3e ligne","Avant",2026-02-06,85,4618,962,159,"Entrainement - Séparé",5,2,2,2,3
+"Alldritt","3e ligne","Avant",2026-02-07,75,5875,1670,157,"Match",22,2,2,4,4
+"Alldritt","3e ligne","Avant",2026-02-09,70,4996,1218,156,"Entrainement - Rugby Collectif",4,3,3,4,2
+"Alldritt","3e ligne","Avant",2026-02-10,106,6567,1655,157,"Entrainement - Séparé",12,2,3,2,3
+"Alldritt","3e ligne","Avant",2026-02-12,72,5751,1472,157,"Entrainement - Vitesse",10,3,3,3,2
+"Alldritt","3e ligne","Avant",2026-02-13,61,4032,708,159,"Entrainement - Rugby Collectif",7,2,3,3,3
+"Alldritt","3e ligne","Avant",2026-02-14,81,6118,2081,152,"Match",16,3,5,3,3
+"Alldritt","3e ligne","Avant",2026-02-16,68,3517,1040,159,"Entrainement - Séparé",9,3,1,2,2
+"Alldritt","3e ligne","Avant",2026-02-17,92,4708,998,156,"Entrainement - Séparé",2,2,1,2,2
+"Alldritt","3e ligne","Avant",2026-02-19,72,4628,936,165,"Entrainement - Vitesse",4,3,1,2,1
+"Alldritt","3e ligne","Avant",2026-02-20,92,7066,1932,156,"Entrainement - Rugby Collectif",15,2,3,3,2
+"Alldritt","3e ligne","Avant",2026-02-21,62,3775,1245,154,"Match",22,2,3,2,3
+"Alldritt","3e ligne","Avant",2026-02-23,93,6850,1228,152,"Entrainement - Rugby Collectif",12,3,3,2,2
+"Alldritt","3e ligne","Avant",2026-02-24,65,4831,1222,159,"Entrainement - Rugby Collectif",2,3,3,4,4
+"Alldritt","3e ligne","Avant",2026-02-26,106,6216,1049,163,"Entrainement - Séparé",3,2,3,3,2
+"Alldritt","3e ligne","Avant",2026-02-27,99,7071,1467,158,"Entrainement - Vitesse",3,2,3,3,2
+"Alldritt","3e ligne","Avant",2026-02-28,20,1591,481,156,"Match",3,2,5,2,4
+"Alldritt","3e ligne","Avant",2026-03-02,66,3748,1149,158,"Entrainement - Séparé",15,3,2,2,2
+"Alldritt","3e ligne","Avant",2026-03-03,101,6144,1209,156,"Entrainement - Vitesse",12,3,2,3,3
+"Alldritt","3e ligne","Avant",2026-03-05,81,7055,1644,153,"Entrainement - Séparé",2,4,4,2,2
+"Alldritt","3e ligne","Avant",2026-03-06,97,5576,1641,157,"Entrainement - Rugby Collectif",10,3,2,2,3
+"Alldritt","3e ligne","Avant",2026-03-07,24,2144,707,155,"Match",8,4,4,3,5
+"Alldritt","3e ligne","Avant",2026-03-09,109,7119,2476,157,"Entrainement - Rugby Collectif",9,2,2,2,3
+"Alldritt","3e ligne","Avant",2026-03-10,99,6766,2353,156,"Entrainement - Rugby Collectif",1,3,2,2,2
+"Alldritt","3e ligne","Avant",2026-03-12,69,4812,729,152,"Entrainement - Rugby Collectif",0,4,2,3,3
+"Alldritt","3e ligne","Avant",2026-03-13,106,5472,1084,159,"Entrainement - Séparé",13,3,3,3,2
+"Alldritt","3e ligne","Avant",2026-03-14,68,4090,952,154,"Match",24,3,2,4,4
+"Ntamack","Ouvreur","Arrière",2026-01-05,79,7603,1966,142,"Entrainement - Séparé",9,4,3,4,2
+"Ntamack","Ouvreur","Arrière",2026-01-06,86,9076,3138,148,"Entrainement - Vitesse",1,4,4,3,3
+"Ntamack","Ouvreur","Arrière",2026-01-08,81,7687,2356,149,"Entrainement - Rugby Collectif",9,3,3,4,1
+"Ntamack","Ouvreur","Arrière",2026-01-09,101,9630,1916,142,"Entrainement - Rugby Collectif",13,2,2,4,1
+"Ntamack","Ouvreur","Arrière",2026-01-10,68,5533,1607,149,"Match",24,4,2,2,3
+"Ntamack","Ouvreur","Arrière",2026-01-12,89,9132,2093,150,"Entrainement - Vitesse",5,4,4,3,2
+"Ntamack","Ouvreur","Arrière",2026-01-13,79,6557,1666,144,"Entrainement - Rugby Collectif",9,2,3,4,1
+"Ntamack","Ouvreur","Arrière",2026-01-15,73,7449,1995,146,"Entrainement - Vitesse",2,4,3,3,1
+"Ntamack","Ouvreur","Arrière",2026-01-16,102,9999,2340,142,"Entrainement - Vitesse",7,3,2,3,1
+"Ntamack","Ouvreur","Arrière",2026-01-17,80,8333,1752,142,"Match",23,4,3,4,4
+"Ntamack","Ouvreur","Arrière",2026-01-19,107,10955,2333,148,"Entrainement - Séparé",2,4,3,3,4
+"Ntamack","Ouvreur","Arrière",2026-01-20,84,8241,2400,146,"Entrainement - Séparé",9,4,2,2,2
+"Ntamack","Ouvreur","Arrière",2026-01-22,90,8364,1485,142,"Entrainement - Rugby Collectif",8,3,2,1,2
+"Ntamack","Ouvreur","Arrière",2026-01-23,109,8941,2363,148,"Entrainement - Vitesse",8,3,4,3,2
+"Ntamack","Ouvreur","Arrière",2026-01-24,15,1273,358,149,"Match",8,4,4,3,4
+"Ntamack","Ouvreur","Arrière",2026-01-26,66,6485,1469,144,"Entrainement - Vitesse",12,3,3,2,3
+"Ntamack","Ouvreur","Arrière",2026-01-27,61,5320,1278,150,"Entrainement - Rugby Collectif",9,3,4,2,3
+"Ntamack","Ouvreur","Arrière",2026-01-29,101,11024,2127,144,"Entrainement - Rugby Collectif",8,4,5,4,2
+"Ntamack","Ouvreur","Arrière",2026-01-30,77,7940,2536,141,"Entrainement - Vitesse",12,3,3,3,3
+"Ntamack","Ouvreur","Arrière",2026-01-31,70,5550,1651,143,"Match",21,2,4,3,5
+"Ntamack","Ouvreur","Arrière",2026-02-02,103,11022,3629,148,"Entrainement - Rugby Collectif",12,4,3,3,1
+"Ntamack","Ouvreur","Arrière",2026-02-03,102,8888,1459,143,"Entrainement - Séparé",1,3,3,2,3
+"Ntamack","Ouvreur","Arrière",2026-02-05,88,8039,2446,146,"Entrainement - Vitesse",10,2,3,3,3
+"Ntamack","Ouvreur","Arrière",2026-02-06,81,7471,2461,147,"Entrainement - Séparé",5,4,3,2,3
+"Ntamack","Ouvreur","Arrière",2026-02-07,29,3196,982,149,"Match",2,5,3,3,4
+"Ntamack","Ouvreur","Arrière",2026-02-09,97,8504,2939,147,"Entrainement - Rugby Collectif",8,3,3,2,2
+"Ntamack","Ouvreur","Arrière",2026-02-10,75,6222,933,147,"Entrainement - Séparé",7,3,4,3,2
+"Ntamack","Ouvreur","Arrière",2026-02-12,99,9666,2169,141,"Entrainement - Vitesse",0,4,4,3,3
+"Ntamack","Ouvreur","Arrière",2026-02-13,70,5784,1941,151,"Entrainement - Rugby Collectif",2,3,2,2,3
+"Ntamack","Ouvreur","Arrière",2026-02-14,10,990,195,142,"Match",7,4,4,3,4
+"Ntamack","Ouvreur","Arrière",2026-02-16,87,8182,2043,149,"Entrainement - Séparé",5,3,4,3,3
+"Ntamack","Ouvreur","Arrière",2026-02-17,77,6257,1300,153,"Entrainement - Séparé",10,4,4,1,2
+"Ntamack","Ouvreur","Arrière",2026-02-19,107,10145,2945,153,"Entrainement - Vitesse",4,3,1,3,2
+"Ntamack","Ouvreur","Arrière",2026-02-20,89,9830,3130,146,"Entrainement - Rugby Collectif",12,4,5,3,2
+"Ntamack","Ouvreur","Arrière",2026-02-21,65,5598,1615,145,"Match",19,4,4,3,3
+"Ntamack","Ouvreur","Arrière",2026-02-23,91,8163,2731,152,"Entrainement - Rugby Collectif",14,4,3,4,1
+"Ntamack","Ouvreur","Arrière",2026-02-24,69,7515,2627,142,"Entrainement - Rugby Collectif",3,4,3,4,2
+"Ntamack","Ouvreur","Arrière",2026-02-26,108,9361,3173,149,"Entrainement - Séparé",5,2,3,3,2
+"Ntamack","Ouvreur","Arrière",2026-02-27,107,10055,1755,142,"Entrainement - Vitesse",8,3,4,3,1
+"Ntamack","Ouvreur","Arrière",2026-02-28,77,7176,1676,146,"Match",19,3,2,5,3
+"Ntamack","Ouvreur","Arrière",2026-03-02,65,5245,1234,144,"Entrainement - Séparé",6,3,4,3,2
+"Ntamack","Ouvreur","Arrière",2026-03-03,66,5927,1755,145,"Entrainement - Vitesse",4,2,4,3,1
+"Ntamack","Ouvreur","Arrière",2026-03-05,87,8999,2583,145,"Entrainement - Séparé",14,4,4,3,2
+"Ntamack","Ouvreur","Arrière",2026-03-06,71,5500,1559,149,"Entrainement - Rugby Collectif",5,2,4,3,2
+"Ntamack","Ouvreur","Arrière",2026-03-07,19,2051,578,143,"Match",4,4,4,5,3
+"Ntamack","Ouvreur","Arrière",2026-03-09,74,6400,2216,144,"Entrainement - Rugby Collectif",12,3,3,3,1
+"Ntamack","Ouvreur","Arrière",2026-03-10,94,8108,2009,148,"Entrainement - Rugby Collectif",5,3,3,3,3
+"Ntamack","Ouvreur","Arrière",2026-03-12,105,10048,3043,148,"Entrainement - Rugby Collectif",0,3,2,4,2
+"Ntamack","Ouvreur","Arrière",2026-03-13,103,8816,2136,152,"Entrainement - Séparé",15,3,3,3,2
+"Ntamack","Ouvreur","Arrière",2026-03-14,71,5870,926,145,"Match",18,4,3,3,4
+"Dupont","Demi de mêlée","Arrière",2026-01-05,75,7387,2079,157,"Entrainement - Séparé",3,4,4,4,3
+"Dupont","Demi de mêlée","Arrière",2026-01-06,73,6912,1722,152,"Entrainement - Vitesse",2,4,3,3,3
+"Dupont","Demi de mêlée","Arrière",2026-01-08,70,5740,1456,154,"Entrainement - Rugby Collectif",7,3,2,4,3
+"Dupont","Demi de mêlée","Arrière",2026-01-09,110,9018,2344,158,"Entrainement - Rugby Collectif",11,3,2,3,4
+"Dupont","Demi de mêlée","Arrière",2026-01-10,38,2239,755,163,"Match",6,3,3,4,3
+"Dupont","Demi de mêlée","Arrière",2026-01-12,85,7315,1212,157,"Entrainement - Vitesse",3,2,4,3,2
+"Dupont","Demi de mêlée","Arrière",2026-01-13,71,4763,846,159,"Entrainement - Rugby Collectif",5,2,3,2,3
+"Dupont","Demi de mêlée","Arrière",2026-01-15,99,10382,2163,152,"Entrainement - Vitesse",11,4,4,3,4
+"Dupont","Demi de mêlée","Arrière",2026-01-16,105,8083,1339,157,"Entrainement - Vitesse",7,3,3,3,3
+"Dupont","Demi de mêlée","Arrière",2026-01-17,69,5805,1501,155,"Match",17,4,3,3,3
+"Dupont","Demi de mêlée","Arrière",2026-01-19,77,7033,1749,156,"Entrainement - Séparé",6,2,4,4,4
+"Dupont","Demi de mêlée","Arrière",2026-01-20,110,9934,1976,155,"Entrainement - Séparé",3,4,2,3,3
+"Dupont","Demi de mêlée","Arrière",2026-01-22,74,5972,1836,153,"Entrainement - Rugby Collectif",9,3,2,3,3
+"Dupont","Demi de mêlée","Arrière",2026-01-23,62,4946,836,153,"Entrainement - Vitesse",9,3,3,3,3
+"Dupont","Demi de mêlée","Arrière",2026-01-24,39,2326,594,162,"Match",2,3,3,2,2
+"Dupont","Demi de mêlée","Arrière",2026-01-26,91,7710,1724,160,"Entrainement - Vitesse",0,3,3,3,2
+"Dupont","Demi de mêlée","Arrière",2026-01-27,60,4135,879,162,"Entrainement - Rugby Collectif",11,4,3,2,2
+"Dupont","Demi de mêlée","Arrière",2026-01-29,72,6183,1071,154,"Entrainement - Rugby Collectif",13,3,3,3,3
+"Dupont","Demi de mêlée","Arrière",2026-01-30,70,5673,965,153,"Entrainement - Vitesse",15,2,3,4,2
+"Dupont","Demi de mêlée","Arrière",2026-01-31,83,5904,1761,156,"Match",21,3,3,3,2
+"Dupont","Demi de mêlée","Arrière",2026-02-02,108,9246,2552,152,"Entrainement - Rugby Collectif",13,3,4,4,2
+"Dupont","Demi de mêlée","Arrière",2026-02-03,69,5528,1115,160,"Entrainement - Séparé",9,3,2,4,2
+"Dupont","Demi de mêlée","Arrière",2026-02-05,101,8594,1828,152,"Entrainement - Vitesse",4,3,4,2,2
+"Dupont","Demi de mêlée","Arrière",2026-02-06,70,5044,778,161,"Entrainement - Séparé",11,3,2,2,3
+"Dupont","Demi de mêlée","Arrière",2026-02-07,32,3184,1045,153,"Match",4,3,3,4,4
+"Dupont","Demi de mêlée","Arrière",2026-02-09,73,5705,1416,161,"Entrainement - Rugby Collectif",5,2,4,3,2
+"Dupont","Demi de mêlée","Arrière",2026-02-10,81,6455,1540,155,"Entrainement - Séparé",1,2,3,3,2
+"Dupont","Demi de mêlée","Arrière",2026-02-12,69,6362,1009,158,"Entrainement - Vitesse",9,3,2,4,4
+"Dupont","Demi de mêlée","Arrière",2026-02-13,77,6117,2038,153,"Entrainement - Rugby Collectif",12,2,2,3,2
+"Dupont","Demi de mêlée","Arrière",2026-02-14,69,5745,1338,155,"Match",24,3,3,4,5
+"Dupont","Demi de mêlée","Arrière",2026-02-16,67,4411,1224,157,"Entrainement - Séparé",8,3,4,2,2
+"Dupont","Demi de mêlée","Arrière",2026-02-17,66,4282,1364,157,"Entrainement - Séparé",12,3,2,2,3
+"Dupont","Demi de mêlée","Arrière",2026-02-19,102,8240,2876,168,"Entrainement - Vitesse",14,2,1,2,2
+"Dupont","Demi de mêlée","Arrière",2026-02-20,82,7369,1373,159,"Entrainement - Rugby Collectif",5,2,2,4,3
+"Dupont","Demi de mêlée","Arrière",2026-02-21,64,3764,1140,162,"Match",17,4,3,3,4
+"Dupont","Demi de mêlée","Arrière",2026-02-23,104,8863,2725,153,"Entrainement - Rugby Collectif",12,4,2,3,4
+"Dupont","Demi de mêlée","Arrière",2026-02-24,60,6083,1723,151,"Entrainement - Rugby Collectif",6,4,4,4,3
+"Dupont","Demi de mêlée","Arrière",2026-02-26,80,6184,2053,154,"Entrainement - Séparé",14,3,2,2,2
+"Dupont","Demi de mêlée","Arrière",2026-02-27,106,8208,1449,157,"Entrainement - Vitesse",6,2,2,3,2
+"Dupont","Demi de mêlée","Arrière",2026-02-28,61,5838,1557,155,"Match",10,3,4,2,3
+"Dupont","Demi de mêlée","Arrière",2026-03-02,69,4817,1032,154,"Entrainement - Séparé",7,2,3,3,3
+"Dupont","Demi de mêlée","Arrière",2026-03-03,72,5419,1074,153,"Entrainement - Vitesse",15,3,2,2,2
+"Dupont","Demi de mêlée","Arrière",2026-03-05,87,8537,2960,150,"Entrainement - Séparé",14,4,3,4,4
+"Dupont","Demi de mêlée","Arrière",2026-03-06,107,8384,2101,157,"Entrainement - Rugby Collectif",7,2,3,3,2
+"Dupont","Demi de mêlée","Arrière",2026-03-07,13,1178,342,154,"Match",9,4,3,3,3
+"Dupont","Demi de mêlée","Arrière",2026-03-09,73,5571,1698,156,"Entrainement - Rugby Collectif",0,4,3,2,2
+"Dupont","Demi de mêlée","Arrière",2026-03-10,72,5212,1621,156,"Entrainement - Rugby Collectif",9,3,3,2,2
+"Dupont","Demi de mêlée","Arrière",2026-03-12,78,6434,1170,156,"Entrainement - Rugby Collectif",12,3,3,2,3
+"Dupont","Demi de mêlée","Arrière",2026-03-13,75,5460,1464,162,"Entrainement - Séparé",3,3,3,3,4
+"Dupont","Demi de mêlée","Arrière",2026-03-14,78,5579,1726,156,"Match",11,2,3,4,2
+"Penaud","Ailier","Arrière",2026-01-05,64,4264,787,145,"Entrainement - Séparé",14,3,3,4,4
+"Penaud","Ailier","Arrière",2026-01-06,73,5810,1318,147,"Entrainement - Vitesse",2,3,3,4,5
+"Penaud","Ailier","Arrière",2026-01-08,68,5250,1786,141,"Entrainement - Rugby Collectif",2,2,4,3,4
+"Penaud","Ailier","Arrière",2026-01-09,89,5089,1492,150,"Entrainement - Rugby Collectif",12,2,3,4,3
+"Penaud","Ailier","Arrière",2026-01-10,75,3341,757,147,"Match",15,5,4,3,5
+"Penaud","Ailier","Arrière",2026-01-12,106,7331,2266,147,"Entrainement - Vitesse",0,5,2,5,3
+"Penaud","Ailier","Arrière",2026-01-13,95,6075,1078,148,"Entrainement - Rugby Collectif",5,2,3,3,2
+"Penaud","Ailier","Arrière",2026-01-15,89,7216,1425,140,"Entrainement - Vitesse",1,2,3,2,5
+"Penaud","Ailier","Arrière",2026-01-16,100,7090,2353,149,"Entrainement - Vitesse",10,3,4,4,3
+"Penaud","Ailier","Arrière",2026-01-17,61,4148,685,145,"Match",16,3,5,5,4
+"Penaud","Ailier","Arrière",2026-01-19,95,7071,1814,148,"Entrainement - Séparé",3,2,3,2,3
+"Penaud","Ailier","Arrière",2026-01-20,83,6258,1658,150,"Entrainement - Séparé",13,2,3,4,4
+"Penaud","Ailier","Arrière",2026-01-22,92,6566,2156,145,"Entrainement - Rugby Collectif",6,3,3,5,3
+"Penaud","Ailier","Arrière",2026-01-23,76,5106,1585,150,"Entrainement - Vitesse",3,3,2,2,3
+"Penaud","Ailier","Arrière",2026-01-24,11,552,167,147,"Match",2,4,4,3,4
+"Penaud","Ailier","Arrière",2026-01-26,91,7094,1138,147,"Entrainement - Vitesse",1,2,3,4,5
+"Penaud","Ailier","Arrière",2026-01-27,108,6879,1419,150,"Entrainement - Rugby Collectif",3,3,3,2,5
+"Penaud","Ailier","Arrière",2026-01-29,87,6465,2254,144,"Entrainement - Rugby Collectif",6,3,3,4,4
+"Penaud","Ailier","Arrière",2026-01-30,83,5837,1129,144,"Entrainement - Vitesse",1,3,3,4,5
+"Penaud","Ailier","Arrière",2026-01-31,75,4003,1183,146,"Match",22,3,5,3,4
+"Penaud","Ailier","Arrière",2026-02-02,96,6495,1693,149,"Entrainement - Rugby Collectif",13,3,4,2,4
+"Penaud","Ailier","Arrière",2026-02-03,107,6352,2220,147,"Entrainement - Séparé",8,2,1,5,3
+"Penaud","Ailier","Arrière",2026-02-05,103,7263,1958,150,"Entrainement - Vitesse",1,3,3,2,2
+"Penaud","Ailier","Arrière",2026-02-06,87,5590,839,146,"Entrainement - Séparé",12,2,3,5,1
+"Penaud","Ailier","Arrière",2026-02-07,61,4554,919,146,"Match",19,4,3,5,5
+"Penaud","Ailier","Arrière",2026-02-09,78,4552,772,146,"Entrainement - Rugby Collectif",15,2,3,5,5
+"Penaud","Ailier","Arrière",2026-02-10,66,4064,792,143,"Entrainement - Séparé",11,2,3,2,4
+"Penaud","Ailier","Arrière",2026-02-12,86,6362,1640,146,"Entrainement - Vitesse",14,2,3,5,4
+"Penaud","Ailier","Arrière",2026-02-13,106,6768,1348,146,"Entrainement - Rugby Collectif",3,3,3,4,5
+"Penaud","Ailier","Arrière",2026-02-14,84,6283,974,149,"Match",14,5,4,5,5
+"Penaud","Ailier","Arrière",2026-02-16,104,5425,995,145,"Entrainement - Séparé",2,2,2,2,2
+"Penaud","Ailier","Arrière",2026-02-17,81,4324,1475,147,"Entrainement - Séparé",2,3,3,4,2
+"Penaud","Ailier","Arrière",2026-02-19,83,5273,1556,158,"Entrainement - Vitesse",6,4,2,3,4
+"Penaud","Ailier","Arrière",2026-02-20,76,5299,1657,147,"Entrainement - Rugby Collectif",0,3,4,4,3
+"Penaud","Ailier","Arrière",2026-02-21,80,3381,790,151,"Match",15,3,4,4,4
+"Penaud","Ailier","Arrière",2026-02-23,110,8034,1420,141,"Entrainement - Rugby Collectif",0,4,3,2,5
+"Penaud","Ailier","Arrière",2026-02-24,90,7201,1834,140,"Entrainement - Rugby Collectif",11,3,4,4,5
+"Penaud","Ailier","Arrière",2026-02-26,94,5431,1715,151,"Entrainement - Séparé",9,3,2,3,4
+"Penaud","Ailier","Arrière",2026-02-27,61,3691,659,145,"Entrainement - Vitesse",9,2,3,4,3
+"Penaud","Ailier","Arrière",2026-02-28,23,1552,434,147,"Match",4,5,2,4,5
+"Penaud","Ailier","Arrière",2026-03-02,69,3900,990,144,"Entrainement - Séparé",7,4,3,2,4
+"Penaud","Ailier","Arrière",2026-03-03,88,5967,1030,145,"Entrainement - Vitesse",9,3,3,2,4
+"Penaud","Ailier","Arrière",2026-03-05,64,5237,798,143,"Entrainement - Séparé",12,2,3,4,4
+"Penaud","Ailier","Arrière",2026-03-06,75,3535,942,150,"Entrainement - Rugby Collectif",10,2,3,5,5
+"Penaud","Ailier","Arrière",2026-03-07,64,4726,1237,143,"Match",15,5,3,5,4
+"Penaud","Ailier","Arrière",2026-03-09,75,3863,851,152,"Entrainement - Rugby Collectif",6,4,2,2,4
+"Penaud","Ailier","Arrière",2026-03-10,96,6662,1991,149,"Entrainement - Rugby Collectif",3,3,2,5,5
+"Penaud","Ailier","Arrière",2026-03-12,62,3625,673,147,"Entrainement - Rugby Collectif",5,2,3,4,4
+"Penaud","Ailier","Arrière",2026-03-13,74,3148,1065,151,"Entrainement - Séparé",5,3,4,4,2
+"Penaud","Ailier","Arrière",2026-03-14,69,3568,1214,148,"Match",7,4,4,4,4
+"Fickou","Centre","Arrière",2026-01-05,68,5552,1053,162,"Entrainement - Séparé",1,3,5,3,4
+"Fickou","Centre","Arrière",2026-01-06,63,5375,1785,162,"Entrainement - Vitesse",7,2,3,2,3
+"Fickou","Centre","Arrière",2026-01-08,85,6293,1238,157,"Entrainement - Rugby Collectif",13,2,4,3,2
+"Fickou","Centre","Arrière",2026-01-09,93,6615,1083,159,"Entrainement - Rugby Collectif",10,3,3,3,2
+"Fickou","Centre","Arrière",2026-01-10,11,510,158,164,"Match",5,5,3,2,2
+"Fickou","Centre","Arrière",2026-01-12,62,5277,1164,161,"Entrainement - Vitesse",2,3,3,2,2
+"Fickou","Centre","Arrière",2026-01-13,80,5179,1626,164,"Entrainement - Rugby Collectif",8,3,3,2,2
+"Fickou","Centre","Arrière",2026-01-15,88,7303,1397,155,"Entrainement - Vitesse",6,4,3,4,3
+"Fickou","Centre","Arrière",2026-01-16,84,6425,2069,161,"Entrainement - Vitesse",15,3,2,3,2
+"Fickou","Centre","Arrière",2026-01-17,63,4495,952,157,"Match",13,2,3,4,4
+"Fickou","Centre","Arrière",2026-01-19,78,6900,1191,159,"Entrainement - Séparé",1,4,4,2,3
+"Fickou","Centre","Arrière",2026-01-20,80,7017,2262,155,"Entrainement - Séparé",2,2,4,3,4
+"Fickou","Centre","Arrière",2026-01-22,101,7705,2388,160,"Entrainement - Rugby Collectif",15,2,2,2,3
+"Fickou","Centre","Arrière",2026-01-23,87,6002,1284,164,"Entrainement - Vitesse",2,3,3,3,3
+"Fickou","Centre","Arrière",2026-01-24,85,4581,1182,162,"Match",20,3,3,3,3
+"Fickou","Centre","Arrière",2026-01-26,107,8226,2513,156,"Entrainement - Vitesse",3,2,5,3,4
+"Fickou","Centre","Arrière",2026-01-27,76,4730,1655,157,"Entrainement - Rugby Collectif",11,3,4,2,3
+"Fickou","Centre","Arrière",2026-01-29,70,5653,1788,161,"Entrainement - Rugby Collectif",3,2,4,3,2
+"Fickou","Centre","Arrière",2026-01-30,75,6087,1798,161,"Entrainement - Vitesse",4,3,3,3,2
+"Fickou","Centre","Arrière",2026-01-31,84,5455,1830,161,"Match",20,5,3,2,2
+"Fickou","Centre","Arrière",2026-02-02,95,7767,1692,163,"Entrainement - Rugby Collectif",13,3,3,4,3
+"Fickou","Centre","Arrière",2026-02-03,95,5859,1764,156,"Entrainement - Séparé",3,2,4,3,2
+"Fickou","Centre","Arrière",2026-02-05,100,8429,2747,153,"Entrainement - Vitesse",15,3,4,2,4
+"Fickou","Centre","Arrière",2026-02-06,80,5680,1577,0,"Entrainement - Séparé",12,3,5,3,2
+"Fickou","Centre","Arrière",2026-02-07,83,6200,990,154,"Match",19,3,4,3,4
+"Fickou","Centre","Arrière",2026-02-09,105,7113,1969,162,"Entrainement - Rugby Collectif",5,2,3,3,3
+"Fickou","Centre","Arrière",2026-02-10,92,5798,899,160,"Entrainement - Séparé",12,3,4,2,2
+"Fickou","Centre","Arrière",2026-02-12,100,8517,2910,154,"Entrainement - Vitesse",7,2,4,2,2
+"Fickou","Centre","Arrière",2026-02-13,106,7052,1073,160,"Entrainement - Rugby Collectif",15,3,3,2,3
+"Fickou","Centre","Arrière",2026-02-14,11,836,277,160,"Match",2,5,4,4,3
+"Fickou","Centre","Arrière",2026-02-16,82,5323,1634,163,"Entrainement - Séparé",8,2,3,2,3
+"Fickou","Centre","Arrière",2026-02-17,108,6385,1889,162,"Entrainement - Séparé",9,3,4,2,3
+"Fickou","Centre","Arrière",2026-02-19,72,4621,955,170,"Entrainement - Vitesse",6,1,1,2,2
+"Fickou","Centre","Arrière",2026-02-20,68,5303,1648,154,"Entrainement - Rugby Collectif",5,4,3,2,3
+"Fickou","Centre","Arrière",2026-02-21,60,3148,1028,162,"Match",11,5,4,3,3
+"Fickou","Centre","Arrière",2026-02-23,63,4103,1366,155,"Entrainement - Rugby Collectif",11,3,4,3,3
+"Fickou","Centre","Arrière",2026-02-24,105,9383,1869,160,"Entrainement - Rugby Collectif",2,4,4,3,2
+"Fickou","Centre","Arrière",2026-02-26,88,6118,2091,163,"Entrainement - Séparé",15,3,3,3,2
+"Fickou","Centre","Arrière",2026-02-27,61,4757,1125,154,"Entrainement - Vitesse",13,3,3,3,3
+"Fickou","Centre","Arrière",2026-02-28,79,6086,1358,161,"Match",16,5,5,3,2
+"Fickou","Centre","Arrière",2026-03-02,85,4678,728,157,"Entrainement - Séparé",0,3,1,2,2
+"Fickou","Centre","Arrière",2026-03-03,89,5848,1283,161,"Entrainement - Vitesse",0,3,5,4,2
+"Fickou","Centre","Arrière",2026-03-05,109,8463,2042,163,"Entrainement - Séparé",12,3,4,3,3
+"Fickou","Centre","Arrière",2026-03-06,71,4867,839,160,"Entrainement - Rugby Collectif",4,2,4,2,3
+"Fickou","Centre","Arrière",2026-03-07,24,2034,435,155,"Match",7,3,3,3,4
+"Fickou","Centre","Arrière",2026-03-09,77,5621,1543,155,"Entrainement - Rugby Collectif",0,4,4,2,4
+"Fickou","Centre","Arrière",2026-03-10,68,4170,1075,161,"Entrainement - Rugby Collectif",15,2,3,3,1
+"Fickou","Centre","Arrière",2026-03-12,93,7183,2282,162,"Entrainement - Rugby Collectif",11,3,3,3,3
+"Fickou","Centre","Arrière",2026-03-13,74,3926,927,158,"Entrainement - Séparé",7,2,3,3,3
+"Fickou","Centre","Arrière",2026-03-14,63,3907,812,157,"Match",12,5,3,2,3
+"Marchand","Talonneur","Avant",2026-01-05,65,4579,1474,156,"Entrainement - Séparé",5,3,2,3,2
+"Marchand","Talonneur","Avant",2026-01-06,92,8061,1949,159,"Entrainement - Vitesse",14,3,2,2,4
+"Marchand","Talonneur","Avant",2026-01-08,86,6795,1503,151,"Entrainement - Rugby Collectif",13,3,2,2,2
+"Marchand","Talonneur","Avant",2026-01-09,94,6135,1366,160,"Entrainement - Rugby Collectif",10,3,2,3,3
+"Marchand","Talonneur","Avant",2026-01-10,16,844,267,162,"Match",5,3,3,3,4
+"Marchand","Talonneur","Avant",2026-01-12,84,6539,1750,155,"Entrainement - Vitesse",2,4,3,2,3
+"Marchand","Talonneur","Avant",2026-01-13,73,4454,1550,163,"Entrainement - Rugby Collectif",7,2,2,1,3
+"Marchand","Talonneur","Avant",2026-01-15,106,9283,2765,153,"Entrainement - Vitesse",8,3,4,2,3
+"Marchand","Talonneur","Avant",2026-01-16,65,4218,1266,158,"Entrainement - Vitesse",3,3,3,3,2
+"Marchand","Talonneur","Avant",2026-01-17,82,5647,882,157,"Match",13,3,4,4,3
+"Marchand","Talonneur","Avant",2026-01-19,103,9101,2110,153,"Entrainement - Séparé",1,4,4,3,2
+"Marchand","Talonneur","Avant",2026-01-20,104,8480,1545,155,"Entrainement - Séparé",10,2,3,3,2
+"Marchand","Talonneur","Avant",2026-01-22,64,4606,1248,155,"Entrainement - Rugby Collectif",3,2,3,2,2
+"Marchand","Talonneur","Avant",2026-01-23,93,6004,2072,162,"Entrainement - Vitesse",8,3,2,3,3
+"Marchand","Talonneur","Avant",2026-01-24,80,4534,1492,162,"Match",24,2,2,2,2
+"Marchand","Talonneur","Avant",2026-01-26,72,6244,1140,154,"Entrainement - Vitesse",9,4,2,3,2
+"Marchand","Talonneur","Avant",2026-01-27,61,4213,1453,154,"Entrainement - Rugby Collectif",3,2,3,3,3
+"Marchand","Talonneur","Avant",2026-01-29,78,6111,1622,152,"Entrainement - Rugby Collectif",2,2,3,3,3
+"Marchand","Talonneur","Avant",2026-01-30,81,6369,1566,159,"Entrainement - Vitesse",14,3,4,3,3
+"Marchand","Talonneur","Avant",2026-01-31,76,4933,1622,155,"Match",19,5,5,5,3
+"Marchand","Talonneur","Avant",2026-02-02,91,6670,2130,156,"Entrainement - Rugby Collectif",2,3,3,2,2
+"Marchand","Talonneur","Avant",2026-02-03,70,4740,737,153,"Entrainement - Séparé",15,3,2,2,2
+"Marchand","Talonneur","Avant",2026-02-05,60,4324,652,159,"Entrainement - Vitesse",8,3,3,3,3
+"Marchand","Talonneur","Avant",2026-02-06,76,4482,950,156,"Entrainement - Séparé",15,3,3,3,3
+"Marchand","Talonneur","Avant",2026-02-07,62,4987,1434,152,"Match",10,3,4,5,3
+"Marchand","Talonneur","Avant",2026-02-09,78,5430,1547,155,"Entrainement - Rugby Collectif",12,2,2,3,2
+"Marchand","Talonneur","Avant",2026-02-10,82,4766,1003,163,"Entrainement - Séparé",1,3,3,3,2
+"Marchand","Talonneur","Avant",2026-02-12,66,4676,1266,153,"Entrainement - Vitesse",5,3,3,4,3
+"Marchand","Talonneur","Avant",2026-02-13,60,4107,850,161,"Entrainement - Rugby Collectif",9,3,3,2,3
+"Marchand","Talonneur","Avant",2026-02-14,21,1543,349,156,"Match",3,2,2,3,3
+"Marchand","Talonneur","Avant",2026-02-16,78,4988,1019,162,"Entrainement - Séparé",5,3,2,3,2
+"Marchand","Talonneur","Avant",2026-02-17,106,6771,1706,157,"Entrainement - Séparé",1,3,3,3,3
+"Marchand","Talonneur","Avant",2026-02-19,85,4796,1129,180,"Entrainement - Vitesse",15,3,2,1,3
+"Marchand","Talonneur","Avant",2026-02-20,60,5079,1668,150,"Entrainement - Rugby Collectif",3,3,3,3,3
+"Marchand","Talonneur","Avant",2026-02-21,82,4697,871,156,"Match",13,4,3,5,3
+"Marchand","Talonneur","Avant",2026-02-23,65,5082,1506,152,"Entrainement - Rugby Collectif",1,3,2,2,4
+"Marchand","Talonneur","Avant",2026-02-24,88,NA,NA,159,"Entrainement - Rugby Collectif",6,3,2,3,2
+"Marchand","Talonneur","Avant",2026-02-26,82,4854,1043,157,"Entrainement - Séparé",7,2,3,3,3
+"Marchand","Talonneur","Avant",2026-02-27,82,6152,987,154,"Entrainement - Vitesse",12,3,3,2,3
+"Marchand","Talonneur","Avant",2026-02-28,23,1738,402,157,"Match",10,3,3,5,2
+"Marchand","Talonneur","Avant",2026-03-02,64,3325,1139,154,"Entrainement - Séparé",10,1,1,1,1
+"Marchand","Talonneur","Avant",2026-03-03,82,5159,852,161,"Entrainement - Vitesse",4,2,3,2,2
+"Marchand","Talonneur","Avant",2026-03-05,89,7558,2425,156,"Entrainement - Séparé",5,2,3,4,3
+"Marchand","Talonneur","Avant",2026-03-06,77,4210,1235,160,"Entrainement - Rugby Collectif",8,2,3,1,2
+"Marchand","Talonneur","Avant",2026-03-07,74,6419,1840,156,"Match",24,5,3,3,4
+"Marchand","Talonneur","Avant",2026-03-09,96,6617,2197,154,"Entrainement - Rugby Collectif",5,2,2,2,3
+"Marchand","Talonneur","Avant",2026-03-10,96,6497,1095,158,"Entrainement - Rugby Collectif",5,3,4,3,2
+"Marchand","Talonneur","Avant",2026-03-12,78,6006,1028,160,"Entrainement - Rugby Collectif",6,2,3,2,3
+"Marchand","Talonneur","Avant",2026-03-13,76,3621,688,155,"Entrainement - Séparé",10,1,2,2,3
+"Marchand","Talonneur","Avant",2026-03-14,84,5227,1599,157,"Match",20,3,4,4,3
+"Ollivon","3e ligne","Avant",2026-01-05,95,8039,1588,161,"Entrainement - Séparé",7,3,2,4,3
+"Ollivon","3e ligne","Avant",2026-01-06,75,6743,1274,155,"Entrainement - Vitesse",14,4,3,3,3
+"Ollivon","3e ligne","Avant",2026-01-08,95,8006,2322,157,"Entrainement - Rugby Collectif",13,2,2,3,2
+"Ollivon","3e ligne","Avant",2026-01-09,82,6700,1642,156,"Entrainement - Rugby Collectif",7,2,4,3,3
+"Ollivon","3e ligne","Avant",2026-01-10,68,4965,1346,155,"Match",14,3,5,3,3
+"Ollivon","3e ligne","Avant",2026-01-12,60,5844,1850,154,"Entrainement - Vitesse",1,2,3,2,3
+"Ollivon","3e ligne","Avant",2026-01-13,68,5689,1765,163,"Entrainement - Rugby Collectif",2,2,3,4,3
+"Ollivon","3e ligne","Avant",2026-01-15,81,7848,2336,161,"Entrainement - Vitesse",7,4,4,3,4
+"Ollivon","3e ligne","Avant",2026-01-16,76,6416,2096,157,"Entrainement - Vitesse",11,3,2,4,2
+"Ollivon","3e ligne","Avant",2026-01-17,21,1889,335,155,"Match",5,3,3,2,3
+"Ollivon","3e ligne","Avant",2026-01-19,61,5747,1691,152,"Entrainement - Séparé",14,3,3,2,4
+"Ollivon","3e ligne","Avant",2026-01-20,89,8396,2591,161,"Entrainement - Séparé",5,3,4,3,4
+"Ollivon","3e ligne","Avant",2026-01-22,95,8264,1925,154,"Entrainement - Rugby Collectif",9,2,4,3,2
+"Ollivon","3e ligne","Avant",2026-01-23,78,6262,1684,155,"Entrainement - Vitesse",4,4,3,2,3
+"Ollivon","3e ligne","Avant",2026-01-24,77,5016,1146,160,"Match",12,4,3,5,2
+"Ollivon","3e ligne","Avant",2026-01-26,65,5916,1255,154,"Entrainement - Vitesse",13,3,3,3,3
+"Ollivon","3e ligne","Avant",2026-01-27,62,4800,1403,154,"Entrainement - Rugby Collectif",7,3,3,3,3
+"Ollivon","3e ligne","Avant",2026-01-29,74,7296,2037,160,"Entrainement - Rugby Collectif",2,4,4,2,4
+"Ollivon","3e ligne","Avant",2026-01-30,65,5878,1746,158,"Entrainement - Vitesse",8,2,4,3,3
+"Ollivon","3e ligne","Avant",2026-01-31,60,4707,1506,154,"Match",12,4,3,3,2
+"Ollivon","3e ligne","Avant",2026-02-02,92,8868,2219,156,"Entrainement - Rugby Collectif",12,4,3,3,3
+"Ollivon","3e ligne","Avant",2026-02-03,102,8338,2780,154,"Entrainement - Séparé",7,4,3,3,3
+"Ollivon","3e ligne","Avant",2026-02-05,73,6492,2056,156,"Entrainement - Vitesse",3,3,3,2,3
+"Ollivon","3e ligne","Avant",2026-02-06,99,7558,2627,158,"Entrainement - Séparé",10,4,3,3,2
+"Ollivon","3e ligne","Avant",2026-02-07,64,6242,1282,155,"Match",13,5,5,4,3
+"Ollivon","3e ligne","Avant",2026-02-09,93,8044,2167,160,"Entrainement - Rugby Collectif",12,2,2,3,2
+"Ollivon","3e ligne","Avant",2026-02-10,70,5201,1769,156,"Entrainement - Séparé",12,3,2,3,3
+"Ollivon","3e ligne","Avant",2026-02-12,108,10381,2472,154,"Entrainement - Vitesse",8,4,4,3,4
+"Ollivon","3e ligne","Avant",2026-02-13,95,7440,1490,160,"Entrainement - Rugby Collectif",7,3,2,3,3
+"Ollivon","3e ligne","Avant",2026-02-14,83,7229,2052,155,"Match",10,3,3,3,4
+"Ollivon","3e ligne","Avant",2026-02-16,88,7057,2429,155,"Entrainement - Séparé",4,2,2,3,3
+"Ollivon","3e ligne","Avant",2026-02-17,98,7758,2360,160,"Entrainement - Séparé",11,2,2,3,2
+"Ollivon","3e ligne","Avant",2026-02-19,89,6427,1987,168,"Entrainement - Vitesse",2,1,2,2,2
+"Ollivon","3e ligne","Avant",2026-02-20,69,6646,1760,154,"Entrainement - Rugby Collectif",13,3,3,4,4
+"Ollivon","3e ligne","Avant",2026-02-21,32,2138,590,156,"Match",6,5,4,3,2
+"Ollivon","3e ligne","Avant",2026-02-23,108,9483,2913,158,"Entrainement - Rugby Collectif",6,4,2,3,3
+"Ollivon","3e ligne","Avant",2026-02-24,61,6031,2039,152,"Entrainement - Rugby Collectif",6,2,4,4,4
+"Ollivon","3e ligne","Avant",2026-02-26,64,4252,1437,159,"Entrainement - Séparé",13,3,3,3,2
+"Ollivon","3e ligne","Avant",2026-02-27,61,5078,971,154,"Entrainement - Vitesse",8,3,3,3,3
+"Ollivon","3e ligne","Avant",2026-02-28,71,6684,1153,161,"Match",10,2,5,5,4
+"Ollivon","3e ligne","Avant",2026-03-02,106,7330,1765,164,"Entrainement - Séparé",5,2,2,3,3
+"Ollivon","3e ligne","Avant",2026-03-03,74,6396,1619,155,"Entrainement - Vitesse",0,2,3,3,3
+"Ollivon","3e ligne","Avant",2026-03-05,72,7247,2269,160,"Entrainement - Séparé",0,4,3,3,3
+"Ollivon","3e ligne","Avant",2026-03-06,82,5683,977,156,"Entrainement - Rugby Collectif",8,3,2,3,4
+"Ollivon","3e ligne","Avant",2026-03-07,21,2001,624,161,"Match",6,3,3,4,3
+"Ollivon","3e ligne","Avant",2026-03-09,67,5142,1234,160,"Entrainement - Rugby Collectif",9,2,3,2,3
+"Ollivon","3e ligne","Avant",2026-03-10,62,5036,1268,158,"Entrainement - Rugby Collectif",13,2,4,3,3
+"Ollivon","3e ligne","Avant",2026-03-12,109,9285,2418,155,"Entrainement - Rugby Collectif",9,3,4,3,3
+"Ollivon","3e ligne","Avant",2026-03-13,109,6593,1085,164,"Entrainement - Séparé",4,3,3,2,2
+"Ollivon","3e ligne","Avant",2026-03-14,61,5260,881,156,"Match",16,4,5,4,3
+"Ramos","Arrière","Arrière",2026-01-05,75,7394,1350,142,"Entrainement - Séparé",3,4,3,3,3
+"Ramos","Arrière","Arrière",2026-01-06,63,6797,1389,139,"Entrainement - Vitesse",0,4,4,4,4
+"Ramos","Arrière","Arrière",2026-01-08,66,6068,1573,138,"Entrainement - Rugby Collectif",13,3,4,4,2
+"Ramos","Arrière","Arrière",2026-01-09,107,8747,1814,139,"Entrainement - Rugby Collectif",15,2,3,3,3
+"Ramos","Arrière","Arrière",2026-01-10,13,881,196,141,"Match",2,3,3,4,4
+"Ramos","Arrière","Arrière",2026-01-12,103,10368,2418,138,"Entrainement - Vitesse",9,3,3,4,3
+"Ramos","Arrière","Arrière",2026-01-13,75,6022,1060,145,"Entrainement - Rugby Collectif",14,2,3,4,3
+"Ramos","Arrière","Arrière",2026-01-15,96,9121,2214,135,"Entrainement - Vitesse",1,4,4,3,3
+"Ramos","Arrière","Arrière",2026-01-16,103,8662,2599,141,"Entrainement - Vitesse",5,3,3,3,4
+"Ramos","Arrière","Arrière",2026-01-17,18,1566,546,137,"Match",3,4,2,3,4
+"Ramos","Arrière","Arrière",2026-01-19,68,7209,2059,137,"Entrainement - Séparé",3,3,3,4,3
+"Ramos","Arrière","Arrière",2026-01-20,86,7927,2128,137,"Entrainement - Séparé",2,3,4,2,3
+"Ramos","Arrière","Arrière",2026-01-22,84,7383,1727,134,"Entrainement - Rugby Collectif",12,2,2,3,4
+"Ramos","Arrière","Arrière",2026-01-23,68,5287,1435,138,"Entrainement - Vitesse",9,4,2,2,3
+"Ramos","Arrière","Arrière",2026-01-24,66,4625,1427,155,"Match",22,4,3,3,2
+"Ramos","Arrière","Arrière",2026-01-26,103,9625,1993,135,"Entrainement - Vitesse",15,4,3,4,3
+"Ramos","Arrière","Arrière",2026-01-27,84,6823,1431,141,"Entrainement - Rugby Collectif",15,3,2,4,4
+"Ramos","Arrière","Arrière",2026-01-29,85,7767,1461,139,"Entrainement - Rugby Collectif",7,3,4,3,3
+"Ramos","Arrière","Arrière",2026-01-30,63,5716,1207,142,"Entrainement - Vitesse",8,3,4,3,3
+"Ramos","Arrière","Arrière",2026-01-31,66,4785,1475,141,"Match",22,4,3,3,3
+"Ramos","Arrière","Arrière",2026-02-02,69,6384,1822,141,"Entrainement - Rugby Collectif",2,2,3,2,4
+"Ramos","Arrière","Arrière",2026-02-03,77,6248,2176,141,"Entrainement - Séparé",3,3,3,2,3
+"Ramos","Arrière","Arrière",2026-02-05,104,9185,3128,137,"Entrainement - Vitesse",12,4,3,4,3
+"Ramos","Arrière","Arrière",2026-02-06,93,7135,2130,141,"Entrainement - Séparé",8,2,4,3,2
+"Ramos","Arrière","Arrière",2026-02-07,31,2814,572,136,"Match",8,5,5,3,3
+"Ramos","Arrière","Arrière",2026-02-09,103,9258,2843,141,"Entrainement - Rugby Collectif",13,4,4,2,3
+"Ramos","Arrière","Arrière",2026-02-10,81,5966,1157,144,"Entrainement - Séparé",13,4,2,4,3
+"Ramos","Arrière","Arrière",2026-02-12,80,6770,1364,140,"Entrainement - Vitesse",12,3,3,2,4
+"Ramos","Arrière","Arrière",2026-02-13,104,9353,2658,140,"Entrainement - Rugby Collectif",15,3,3,2,4
+"Ramos","Arrière","Arrière",2026-02-14,60,5713,1733,136,"Match",13,2,4,5,4
+"Ramos","Arrière","Arrière",2026-02-16,78,6310,1259,140,"Entrainement - Séparé",6,3,3,3,3
+"Ramos","Arrière","Arrière",2026-02-17,86,7135,1351,140,"Entrainement - Séparé",11,4,4,4,4
+"Ramos","Arrière","Arrière",2026-02-19,72,5609,1742,134,"Entrainement - Vitesse",0,1,1,3,2
+"Ramos","Arrière","Arrière",2026-02-20,67,6763,1079,139,"Entrainement - Rugby Collectif",10,3,4,3,4
+"Ramos","Arrière","Arrière",2026-02-21,36,2316,612,144,"Match",7,3,3,3,3
+"Ramos","Arrière","Arrière",2026-02-23,80,7239,2065,137,"Entrainement - Rugby Collectif",15,2,4,3,3
+"Ramos","Arrière","Arrière",2026-02-24,81,8370,2557,136,"Entrainement - Rugby Collectif",4,3,4,3,4
+"Ramos","Arrière","Arrière",2026-02-26,90,6862,2096,130,"Entrainement - Séparé",9,2,3,2,3
+"Ramos","Arrière","Arrière",2026-02-27,101,9553,1649,138,"Entrainement - Vitesse",10,2,3,3,3
+"Ramos","Arrière","Arrière",2026-02-28,83,7490,1841,134,"Match",21,3,3,3,4
+"Ramos","Arrière","Arrière",2026-03-02,64,4393,993,145,"Entrainement - Séparé",4,3,2,2,2
+"Ramos","Arrière","Arrière",2026-03-03,82,6511,1465,138,"Entrainement - Vitesse",3,4,3,2,4
+"Ramos","Arrière","Arrière",2026-03-05,67,6867,2232,137,"Entrainement - Séparé",0,4,4,4,3
+"Ramos","Arrière","Arrière",2026-03-06,96,7617,1734,139,"Entrainement - Rugby Collectif",7,2,4,3,2
+"Ramos","Arrière","Arrière",2026-03-07,75,7514,1308,139,"Match",12,3,3,3,3
+"Ramos","Arrière","Arrière",2026-03-09,88,6770,1087,141,"Entrainement - Rugby Collectif",7,3,3,4,3
+"Ramos","Arrière","Arrière",2026-03-10,94,7919,2508,127,"Entrainement - Rugby Collectif",12,4,3,3,3
+"Ramos","Arrière","Arrière",2026-03-12,93,8699,2784,137,"Entrainement - Rugby Collectif",10,4,2,3,2
+"Ramos","Arrière","Arrière",2026-03-13,85,6149,981,135,"Entrainement - Séparé",8,2,3,2,2
+"Ramos","Arrière","Arrière",2026-03-14,20,1621,494,130,"Match",4,4,4,3,4
+"Jelonch","3e ligne","Avant",2026-01-05,64,5139,1012,153,"Entrainement - Séparé",15,4,3,3,2
+"Jelonch","3e ligne","Avant",2026-01-06,106,9689,2626,152,"Entrainement - Vitesse",4,2,3,4,3
+"Jelonch","3e ligne","Avant",2026-01-08,105,8588,2742,150,"Entrainement - Rugby Collectif",1,2,2,2,3
+"Jelonch","3e ligne","Avant",2026-01-09,82,5363,1076,155,"Entrainement - Rugby Collectif",5,2,3,3,2
+"Jelonch","3e ligne","Avant",2026-01-10,22,1328,248,156,"Match",5,4,2,3,3
+"Jelonch","3e ligne","Avant",2026-01-12,83,7165,2247,151,"Entrainement - Vitesse",11,4,3,2,3
+"Jelonch","3e ligne","Avant",2026-01-13,63,3914,994,154,"Entrainement - Rugby Collectif",3,3,2,2,2
+"Jelonch","3e ligne","Avant",2026-01-15,96,9310,2882,145,"Entrainement - Vitesse",0,4,3,3,4
+"Jelonch","3e ligne","Avant",2026-01-16,97,7495,2142,152,"Entrainement - Vitesse",3,2,2,4,2
+"Jelonch","3e ligne","Avant",2026-01-17,29,2143,731,50,"Match",8,4,3,4,3
+"Jelonch","3e ligne","Avant",2026-01-19,76,6372,2107,155,"Entrainement - Séparé",3,4,3,3,3
+"Jelonch","3e ligne","Avant",2026-01-20,102,8024,2399,149,"Entrainement - Séparé",8,2,2,4,3
+"Jelonch","3e ligne","Avant",2026-01-22,70,4735,964,158,"Entrainement - Rugby Collectif",6,2,3,2,2
+"Jelonch","3e ligne","Avant",2026-01-23,108,7364,1794,152,"Entrainement - Vitesse",12,3,3,3,3
+"Jelonch","3e ligne","Avant",2026-01-24,27,1598,273,153,"Match",8,5,4,5,3
+"Jelonch","3e ligne","Avant",2026-01-26,62,5343,802,155,"Entrainement - Vitesse",12,2,3,3,3
+"Jelonch","3e ligne","Avant",2026-01-27,68,5072,1042,150,"Entrainement - Rugby Collectif",9,2,4,3,2
+"Jelonch","3e ligne","Avant",2026-01-29,82,7174,1190,156,"Entrainement - Rugby Collectif",0,2,2,3,4
+"Jelonch","3e ligne","Avant",2026-01-30,96,6957,1652,154,"Entrainement - Vitesse",13,3,3,4,2
+"Jelonch","3e ligne","Avant",2026-01-31,81,5692,1642,151,"Match",20,2,3,4,5
+"Jelonch","3e ligne","Avant",2026-02-02,92,NA,NA,150,"Entrainement - Rugby Collectif",9,3,3,3,3
+"Jelonch","3e ligne","Avant",2026-02-03,110,7029,1982,154,"Entrainement - Séparé",13,2,3,3,2
+"Jelonch","3e ligne","Avant",2026-02-05,95,7686,2073,153,"Entrainement - Vitesse",1,2,4,3,4
+"Jelonch","3e ligne","Avant",2026-02-06,71,4517,726,151,"Entrainement - Séparé",1,2,3,2,3
+"Jelonch","3e ligne","Avant",2026-02-07,77,6108,954,154,"Match",22,3,4,3,3
+"Jelonch","3e ligne","Avant",2026-02-09,90,6553,2270,154,"Entrainement - Rugby Collectif",14,2,4,3,3
+"Jelonch","3e ligne","Avant",2026-02-10,96,6074,1140,153,"Entrainement - Séparé",5,2,2,3,2
+"Jelonch","3e ligne","Avant",2026-02-12,79,6886,2172,148,"Entrainement - Vitesse",1,3,3,4,2
+"Jelonch","3e ligne","Avant",2026-02-13,110,8663,2120,151,"Entrainement - Rugby Collectif",6,4,4,2,3
+"Jelonch","3e ligne","Avant",2026-02-14,20,1579,342,154,"Match",4,5,3,4,4
+"Jelonch","3e ligne","Avant",2026-02-16,102,6498,1466,159,"Entrainement - Séparé",7,3,2,2,2
+"Jelonch","3e ligne","Avant",2026-02-17,88,6011,1718,149,"Entrainement - Séparé",14,3,3,3,2
+"Jelonch","3e ligne","Avant",2026-02-19,67,4894,862,160,"Entrainement - Vitesse",15,2,1,2,3
+"Jelonch","3e ligne","Avant",2026-02-20,87,8096,2619,151,"Entrainement - Rugby Collectif",6,3,3,3,3
+"Jelonch","3e ligne","Avant",2026-02-21,36,2291,759,153,"Match",8,2,4,3,2
+"Jelonch","3e ligne","Avant",2026-02-23,71,5169,1629,150,"Entrainement - Rugby Collectif",11,2,2,2,3
+"Jelonch","3e ligne","Avant",2026-02-24,108,9747,2263,146,"Entrainement - Rugby Collectif",13,2,4,2,3
+"Jelonch","3e ligne","Avant",2026-02-26,64,3786,1031,156,"Entrainement - Séparé",15,3,2,3,3
+"Jelonch","3e ligne","Avant",2026-02-27,93,6958,2237,149,"Entrainement - Vitesse",13,2,3,2,3
+"Jelonch","3e ligne","Avant",2026-02-28,18,1478,433,156,"Match",3,4,2,3,4
+"Jelonch","3e ligne","Avant",2026-03-02,74,4524,794,152,"Entrainement - Séparé",15,2,3,2,2
+"Jelonch","3e ligne","Avant",2026-03-03,94,7840,1398,152,"Entrainement - Vitesse",5,2,2,3,4
+"Jelonch","3e ligne","Avant",2026-03-05,110,9696,2547,153,"Entrainement - Séparé",7,3,2,4,3
+"Jelonch","3e ligne","Avant",2026-03-06,99,5971,1633,150,"Entrainement - Rugby Collectif",6,2,2,3,3
+"Jelonch","3e ligne","Avant",2026-03-07,25,2070,539,148,"Match",10,3,3,5,4
+"Jelonch","3e ligne","Avant",2026-03-09,65,4114,1042,156,"Entrainement - Rugby Collectif",2,3,2,2,2
+"Jelonch","3e ligne","Avant",2026-03-10,61,4305,1401,148,"Entrainement - Rugby Collectif",9,2,3,4,2
+"Jelonch","3e ligne","Avant",2026-03-12,85,5739,1964,155,"Entrainement - Rugby Collectif",11,3,2,2,3
+"Jelonch","3e ligne","Avant",2026-03-13,64,3460,1028,152,"Entrainement - Séparé",1,2,2,1,2
+"Jelonch","3e ligne","Avant",2026-03-14,83,5046,1240,157,"Match",12,3,5,4,2
+"Flament","2e ligne","Avant",2026-01-05,84,8800,2893,147,"Entrainement - Séparé",8,2,3,2,1
+"Flament","2e ligne","Avant",2026-01-06,110,11418,2239,142,"Entrainement - Vitesse",6,2,3,3,3
+"Flament","2e ligne","Avant",2026-01-08,82,7406,2584,142,"Entrainement - Rugby Collectif",8,1,4,2,3
+"Flament","2e ligne","Avant",2026-01-09,64,5043,1103,147,"Entrainement - Rugby Collectif",14,3,3,2,2
+"Flament","2e ligne","Avant",2026-01-10,68,5168,1406,151,"Match",17,3,2,4,4
+"Flament","2e ligne","Avant",2026-01-12,74,7486,2076,144,"Entrainement - Vitesse",2,3,2,3,3
+"Flament","2e ligne","Avant",2026-01-13,66,5985,1269,142,"Entrainement - Rugby Collectif",7,2,3,3,4
+"Flament","2e ligne","Avant",2026-01-15,65,6909,1225,143,"Entrainement - Vitesse",3,3,1,3,3
+"Flament","2e ligne","Avant",2026-01-16,86,7024,2025,144,"Entrainement - Vitesse",8,3,3,3,2
+"Flament","2e ligne","Avant",2026-01-17,34,3491,568,144,"Match",5,4,4,5,4
+"Flament","2e ligne","Avant",2026-01-19,71,7628,1344,142,"Entrainement - Séparé",11,3,1,3,3
+"Flament","2e ligne","Avant",2026-01-20,87,7930,2343,148,"Entrainement - Séparé",4,2,3,2,4
+"Flament","2e ligne","Avant",2026-01-22,86,6894,2206,146,"Entrainement - Rugby Collectif",14,1,2,1,2
+"Flament","2e ligne","Avant",2026-01-23,82,7622,1261,148,"Entrainement - Vitesse",5,3,3,4,3
+"Flament","2e ligne","Avant",2026-01-24,70,5324,986,146,"Match",20,3,3,3,4
+"Flament","2e ligne","Avant",2026-01-26,102,10633,2248,141,"Entrainement - Vitesse",14,2,2,2,4
+"Flament","2e ligne","Avant",2026-01-27,66,5377,1217,145,"Entrainement - Rugby Collectif",14,1,3,1,2
+"Flament","2e ligne","Avant",2026-01-29,69,6380,1049,145,"Entrainement - Rugby Collectif",14,2,3,2,3
+"Flament","2e ligne","Avant",2026-01-30,75,7735,2174,146,"Entrainement - Vitesse",13,4,4,4,4
+"Flament","2e ligne","Avant",2026-01-31,80,6976,1257,142,"Match",24,3,2,2,3
+"Flament","2e ligne","Avant",2026-02-02,61,5799,897,143,"Entrainement - Rugby Collectif",0,3,3,4,3
+"Flament","2e ligne","Avant",2026-02-03,107,9781,3296,146,"Entrainement - Séparé",0,3,3,3,2
+"Flament","2e ligne","Avant",2026-02-05,72,7487,2288,143,"Entrainement - Vitesse",8,2,4,2,4
+"Flament","2e ligne","Avant",2026-02-06,96,8187,2050,141,"Entrainement - Séparé",4,1,2,2,2
+"Flament","2e ligne","Avant",2026-02-07,19,1962,451,142,"Match",2,4,3,2,4
+"Flament","2e ligne","Avant",2026-02-09,90,7627,2133,149,"Entrainement - Rugby Collectif",1,2,3,2,3
+"Flament","2e ligne","Avant",2026-02-10,79,6517,1156,150,"Entrainement - Séparé",1,1,2,3,2
+"Flament","2e ligne","Avant",2026-02-12,97,8612,1382,145,"Entrainement - Vitesse",5,2,4,4,3
+"Flament","2e ligne","Avant",2026-02-13,90,7940,2429,145,"Entrainement - Rugby Collectif",13,3,3,2,3
+"Flament","2e ligne","Avant",2026-02-14,23,2095,379,144,"Match",8,2,3,4,3
+"Flament","2e ligne","Avant",2026-02-16,68,5653,1303,142,"Entrainement - Séparé",2,2,3,3,4
+"Flament","2e ligne","Avant",2026-02-17,66,5720,1830,149,"Entrainement - Séparé",10,2,2,3,3
+"Flament","2e ligne","Avant",2026-02-19,64,5461,1253,160,"Entrainement - Vitesse",5,2,1,2,2
+"Flament","2e ligne","Avant",2026-02-20,99,9943,2690,144,"Entrainement - Rugby Collectif",6,3,3,3,3
+"Flament","2e ligne","Avant",2026-02-21,65,4349,1171,152,"Match",18,3,3,2,4
+"Flament","2e ligne","Avant",2026-02-23,75,6503,1419,142,"Entrainement - Rugby Collectif",2,3,4,2,2
+"Flament","2e ligne","Avant",2026-02-24,61,6373,1239,143,"Entrainement - Rugby Collectif",0,1,3,2,4
+"Flament","2e ligne","Avant",2026-02-26,70,5808,1585,149,"Entrainement - Séparé",7,3,2,1,2
+"Flament","2e ligne","Avant",2026-02-27,110,9589,2405,143,"Entrainement - Vitesse",1,4,3,3,2
+"Flament","2e ligne","Avant",2026-02-28,36,3691,998,145,"Match",3,3,3,3,4
+"Flament","2e ligne","Avant",2026-03-02,81,6301,1775,141,"Entrainement - Séparé",14,1,3,2,1
+"Flament","2e ligne","Avant",2026-03-03,83,7937,1665,145,"Entrainement - Vitesse",4,3,2,3,3
+"Flament","2e ligne","Avant",2026-03-05,91,10123,3287,139,"Entrainement - Séparé",4,3,3,4,3
+"Flament","2e ligne","Avant",2026-03-06,65,4798,1028,149,"Entrainement - Rugby Collectif",0,2,2,2,2
+"Flament","2e ligne","Avant",2026-03-07,66,6555,1814,145,"Match",15,3,3,4,3
+"Flament","2e ligne","Avant",2026-03-09,85,6587,1057,150,"Entrainement - Rugby Collectif",1,3,2,1,1
+"Flament","2e ligne","Avant",2026-03-10,73,5941,1954,144,"Entrainement - Rugby Collectif",5,1,3,1,2
+"Flament","2e ligne","Avant",2026-03-12,60,5746,1295,148,"Entrainement - Rugby Collectif",1,1,2,3,1
+"Flament","2e ligne","Avant",2026-03-13,78,5488,1087,149,"Entrainement - Séparé",13,2,3,2,1
+"Flament","2e ligne","Avant",2026-03-14,60,4620,997,150,"Match",22,3,2,4,2
