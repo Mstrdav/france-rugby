@@ -96,26 +96,34 @@ ui <- page_navbar(
               uiOutput("ui_kpi_contacts"),
               uiOutput("ui_kpi_well")
             ),
+            # Analyse Quotidienne remontée en haut
+            card(
+              card_header(
+                class = "bg-primary text-white",
+                "Analyse Quotidienne : Distance, Wellness & Type d'entraînement"
+              ),
+              card_body(plotlyOutput("plot_quotidien", height = "450px"))
+            ),
             layout_columns(
               col_widths = c(7, 5),
-              # Colonne de gauche (Graphe ACWR + Profil Idéal)
+              # Colonne de gauche (Profil Idéal puis ACWR)
               div(
+                card(
+                  card_header(
+                    class = "bg-success text-white",
+                    "Séquence d'Entraînement Idéale (J-4 à J-1)"
+                  ),
+                  card_body(
+                    p("Série d'entraînements maximisant le Wellness observé le 5ème jour (Jour de Match).", style="font-size:0.85em;"),
+                    DTOutput("table_profil_ideal")
+                  )
+                ),
                 card(
                   card_header(
                     class = "bg-primary text-white",
                     "Suivi Longitudinal & Charge ACWR (Distance Totale)"
                   ),
                   card_body(plotlyOutput("plot_longitudinal", height = "400px"))
-                ),
-                card(
-                  card_header(
-                    class = "bg-success text-white",
-                    "Profil d'Entraînement Idéal (Pré-Match)"
-                  ),
-                  card_body(
-                    p("Moyennes d'entraînement quotidiennes (J-5 à J-1) observées lors des semaines précédant les matchs où le joueur a enregistré ses meilleurs scores de Wellness (top 50%).", style="font-size:0.85em;"),
-                    DTOutput("table_profil_ideal")
-                  )
                 )
               ),
               # Colonne de droite (ACP Variables + Individus)
@@ -132,13 +140,6 @@ ui <- page_navbar(
                   plotOutput("plot_pca_ind", height = "300px")
                 )
               )
-            ),
-            card(
-              card_header(
-                class = "bg-primary text-white",
-                "Analyse Quotidienne : Distance, Wellness & Type d'entraînement"
-              ),
-              card_body(plotlyOutput("plot_quotidien", height = "450px"))
             )
   ),
   
@@ -293,11 +294,11 @@ server <- function(input, output, session) {
     create_kpi_box("Score Wellness (7j)", v_7d, v_r, "heart-pulse", reverse_color = FALSE)
   })
   
-  # --- NOUVEAU : Profil d'entraînement idéal ---
+  # --- NOUVEAU : Profil d'entraînement idéal (Séquence de 4 jours) ---
   output$table_profil_ideal <- renderDT({
     d <- df_filtered()
     
-    # Identifier les dates de matchs et le wellness associé
+    # Identifier les matchs et le wellness au jour J
     matches <- d %>% filter(Type == "Match") %>% 
       select(Joueur, Date_Match = Date, Wellness_Match = Wellness) %>% 
       drop_na()
@@ -306,44 +307,54 @@ server <- function(input, output, session) {
       return(datatable(data.frame(Message="Pas de données de match trouvées."), options = list(dom='t'), rownames=FALSE))
     }
     
-    # Récupérer les moyennes d'entraînement des 5 jours précédents
-    pre_match_list <- lapply(1:nrow(matches), function(i) {
+    # Extraire les séquences J-4, J-3, J-2, J-1 pour chaque match
+    seq_list <- lapply(1:nrow(matches), function(i) {
       m <- matches[i, ]
-      sub_d <- d %>% 
-        filter(Joueur == m$Joueur, 
-               Date >= (m$Date_Match - 5), 
-               Date < m$Date_Match)
+      jours <- m$Date_Match - c(4, 3, 2, 1)
       
-      if(nrow(sub_d) == 0) return(NULL)
+      sub_d <- d %>% filter(Joueur == m$Joueur, Date %in% jours)
       
-      sub_d %>% summarise(
-        Dist_moy = mean(`Distance totale (m)`, na.rm=TRUE),
-        Dist_HI_moy = mean(`Distance haute intensité (m)`, na.rm=TRUE),
-        Contacts_moy = mean(`Nombre de contacts`, na.rm=TRUE),
-        Wellness_Match = m$Wellness_Match
+      # Si pas d'entrainement trouvé un jour donné, c'est considéré comme "Repos"
+      types <- sapply(jours, function(j) {
+        t <- sub_d$Type[sub_d$Date == j]
+        if(length(t) == 0) "Repos" else as.character(t[1])
+      })
+      
+      data.frame(
+        Wellness_Match = m$Wellness_Match,
+        J_4 = types[1],
+        J_3 = types[2],
+        J_2 = types[3],
+        J_1 = types[4],
+        Sequence = paste(types, collapse = " | ")
       )
     })
     
-    pre_match_data <- bind_rows(pre_match_list)
+    seq_df <- bind_rows(seq_list)
     
-    if(nrow(pre_match_data) == 0) {
-      return(datatable(data.frame(Message="Pas de données d'entraînement précédant les matchs."), options = list(dom='t'), rownames=FALSE))
+    if(nrow(seq_df) == 0) {
+      return(datatable(data.frame(Message="Pas de données précédant les matchs."), options = list(dom='t'), rownames=FALSE))
     }
     
-    # Filtrer les meilleures préparations (Wellness au-dessus de la médiane)
-    seuil <- median(pre_match_data$Wellness_Match, na.rm=TRUE)
+    # Trouver la séquence qui donne le wellness MAX le jour du match en moyenne
+    best_seq <- seq_df %>%
+      group_by(Sequence, J_4, J_3, J_2, J_1) %>%
+      summarise(Avg_Wellness = mean(Wellness_Match, na.rm=TRUE), Occurrences = n(), .groups="drop") %>%
+      arrange(desc(Avg_Wellness)) %>%
+      slice(1)
     
-    profil_ideal <- pre_match_data %>%
-      filter(Wellness_Match >= seuil) %>%
-      summarise(
-        `Dist/jour ciblée (m)` = round(mean(Dist_moy, na.rm=TRUE), 0),
-        `Dist HI/jour ciblée (m)` = round(mean(Dist_HI_moy, na.rm=TRUE), 0),
-        `Contacts/jour ciblés` = round(mean(Contacts_moy, na.rm=TRUE), 1),
-        `Wellness Match espéré` = round(mean(Wellness_Match, na.rm=TRUE), 2)
-      )
+    res <- data.frame(
+      Jour = c("J-4", "J-3", "J-2", "J-1"),
+      `Type de Séance` = c(best_seq$J_4, best_seq$J_3, best_seq$J_2, best_seq$J_1)
+    )
     
-    datatable(profil_ideal, options = list(dom = 't', scrollX = TRUE), rownames = FALSE) %>%
-      formatStyle(columns = names(profil_ideal), textAlign = 'center', color = '#196F3D', fontWeight = 'bold')
+    caption_text <- paste0("Basé sur ", best_seq$Occurrences, " occurrence(s). Wellness moyen du Match (J0) : ", round(best_seq$Avg_Wellness, 2))
+    
+    datatable(res, 
+              options = list(dom = 't', scrollX = TRUE, ordering = FALSE), 
+              rownames = FALSE,
+              caption = htmltools::tags$caption(style = 'caption-side: bottom; text-align: center; color: #666; font-size: 0.85em; margin-top: 10px;', caption_text)) %>%
+      formatStyle(columns = names(res), textAlign = 'center', color = '#196F3D', fontWeight = 'bold')
   })
   
   output$plot_quotidien <- renderPlotly({
