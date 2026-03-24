@@ -1,0 +1,33 @@
+---
+title: "EDA"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 1. Exploratory Data Analysis (EDA)
+
+```{r librairies, echo=FALSE}
+# Load necessary libraries
+library(ggplot2)
+library(dplyr)
+library(readxl)
+```
+
+```{r import, echo=FALSE}
+# Import the dataset
+dataset <- read_excel("data/rugby.xlsx")
+```
+
+## Summary of the dataset, head, and structure
+
+```{r summary, echo=FALSE}
+# Summary of the dataset
+summary(dataset)
+# Head of the dataset
+head(dataset)
+# Structure of the dataset
+str(dataset)
+```
